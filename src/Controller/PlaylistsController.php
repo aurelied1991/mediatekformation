@@ -62,16 +62,29 @@ class PlaylistsController extends AbstractController
         ]);
     }
 
+    /**
+     * Méthode sort du contrôleur qui permet de trier par ordre ASC ou DESC selon le nom
+     * ou le nombre de formations par playlist
+     * @param type $champ
+     * @param type $ordre
+     * @return Response
+     */
     #[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
     public function sort($champ, $ordre): Response
     {
         if ($champ === 'name') {
+            //Si tri est demandé sur le nom des playslists, appel de la méthode findAllOrderByName
             $playlists = $this->playlistRepository->findAllOrderByName($ordre);
+        } elseif ($champ === 'nbFormations') {
+            //Si tri est demandé sur nombre de formations, appel de la méthode concernée du Repository
+            $playlists = $this->playlistRepository->findAllOrderByNbFormations($ordre);
         } else {
-            //Si nom ne trouve aucun résultat, on retourne toute la playlist
+            //Si le champ est inconnu, on retourne toute la playlist par nom croissant pour éviter erreur
             $playlists = $this->playlistRepository->findAllOrderByName('ASC');
         }
+        //On récupère la liste des catégories pour l'affichage
         $categories = $this->categorieRepository->findAll();
+        //On envoie à la vue les playlists avec un tri applicable
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
             'categories' => $categories

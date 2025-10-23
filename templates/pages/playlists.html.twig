@@ -5,7 +5,7 @@
         <thead>
             <tr>
                 <th class="text-left align-top" scope="col">
-                    playlist<br />
+                    Playlist<br />
                     <a href="{{ path('playlists.sort', {champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('playlists.sort', {champ:'name', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'name'}) }}">
@@ -18,7 +18,12 @@
                     </form>                    
                 </th>
                 <th class="text-left align-top" scope="col">
-                    catégories
+                    Nombre de formations incluses </br>
+                    <a href="{{ path('playlists.sort', {champ:'nbFormations', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('playlists.sort', {champ:'nbFormations', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
+                </th>
+                <th class="text-left align-top" scope="col">
+                    Catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'id', table:'categories'}) }}">
                         <select class="form-select form-select-sm" name="recherche" id="recherche" onchange="this.form.submit()">
                             <option value=""></option>
@@ -47,7 +52,10 @@
                             <h5 class="text-info">
                                 {{ playlists[k].name }}
                             </h5>
-                        </td>                 
+                        </td>
+                        <td>
+                            {{ playlists[k].formations|length }}
+                        </td>
                         <td class="text-left">
                             {% set categories = playlists[k].categoriesplaylist %}
                             {% if categories|length > 0  %}

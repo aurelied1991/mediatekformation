@@ -78,4 +78,27 @@ class PlaylistRepository extends ServiceEntityRepository
                     ->getResult();
         }
     }
+    
+    /**
+     * Méthode renvoyant un tableau de playlists triées selon le nombre de formations incluses
+     * $ordre contient choix ASC/DESC
+     * @param type $ordre
+     * @return array
+     */
+    public function findAllOrderByNbFormations($ordre): array
+    {
+        //création d'un QueryBuilder pour l'entité Playlist avec alias SQL'p'
+        return $this->createQueryBuilder('p')
+                //jointure de gauche entre playlist 'p' et formations 'f' : même si une playlist n'a pas
+                //formation, elle sera incluse
+                ->leftJoin('p.formations', 'f')
+                //regrouper par ID de playlist et nécessaire pour orderBy
+                ->groupBy('p.id')
+                //tri les playlists en fonction du nombre de formations et selon choxi dans $tri (ASC ou DESC)
+                ->orderBy('COUNT(f.id)', $ordre)
+                //transforme le QueryBuilder en  Query exécutable
+                ->getQuery()
+                //exécute la requête et retourne tableau d'objets Playlist
+                ->getResult();
+    }
 }
