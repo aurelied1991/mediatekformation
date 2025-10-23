@@ -14,34 +14,44 @@
     <p>
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
         <table class="table">
-            <tr>
-                {% for formation in formations %}
-                    <td>
-                        <div class="row">
-                            <div class="col">
-                                <!-- emplacement photo -->
-                                {% if formation.picture %}
-                                    <a href="{{ path('formations.showone', {id:formation.id}) }}">
-                                    <img src="{{ formation.picture }}" 
-                                         class="card-img-top" style="width:100%;height:auto;">
-                                    </a>    
-                                {% endif %}
-                            </div>
-                            <div class="col">
-                                <p>{{ formation.publishedatstring }}</p>
-                                <h5 class="text-info mt-1">
-                                    {{ formation.title }}
-                                </h5>
-                                <strong>playlist : </strong>{{ formation.playlist.name }}<br />
-                                <strong>catégories : </strong> 
-                                {% for categorie in formation.categories %}
-                                    {{ categorie.name }}&nbsp;
-                                {% endfor %}
-                            </div>    
-                        </div>                    
-                {% endfor %}    
-            </tr>
-
+            <caption class="visually-hidden">Tableau pour afficher les deux dernières formations ajoutées avec photo, date, nom, catégories, playlist</caption>
+            <thead class="visually-hidden">
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Détails</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for formation in formations %}
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                    <!-- emplacement photo -->
+                                    {% if formation.picture %}
+                                        <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                                        <img src="{{ formation.picture }}"
+                                             alt="Image illustrant la formation"
+                                             class="card-img-top" 
+                                             style="width:100%;height:auto;">
+                                        </a>    
+                                    {% endif %}
+                                </div>
+                                <div class="col">
+                                    <p>{{ formation.publishedatstring }}</p>
+                                    <h5 class="text-info mt-1">
+                                        {{ formation.title }}
+                                    </h5>
+                                    <strong>playlist : </strong>{{ formation.playlist.name }}<br />
+                                    <strong>catégories : </strong> 
+                                    {% for categorie in formation.categories %}
+                                        {{ categorie.name }}&nbsp;
+                                    {% endfor %}
+                                </div>    
+                            </div>                    
+                    {% endfor %}    
+                </tr>
+            </tbody>
         </table>        
     </p>
 {% endblock %}
