@@ -1,0 +1,53 @@
+{# Permet d'afficher et positionner le formulaire avec tous les champs #}
+{# form_row(formFormation.nomduchamp) permet d'accéder au champ du formulaire #}
+
+{{ form_start(formFormation) }}
+<div class="row">
+    <div class="col">
+        <div class="row mb-3">
+            <div class="col-auto">
+                {{ form_label(formFormation.published_at) }}
+            </div>
+            <div class="col-auto">
+                {{ form_widget(formFormation.published_at) }}
+                {% if form_errors(formFormation.published_at) %}
+                    <div style="color: red; list-style: none; margin-top: 4px; margin-left: -70px;">
+                        {{ form_errors(formFormation.published_at) }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-auto">
+                {{ form_label(formFormation.title) }}
+            </div>
+            <div class="col-auto">
+                {{ form_widget(formFormation.title) }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-auto">
+                {{ form_label(formFormation.playlist) }}
+            </div>
+            <div class="col-auto">
+                {{ form_widget(formFormation.playlist) }}
+            </div>
+            <div class="col-auto">
+                {{ form_label(formFormation.categories) }}
+            </div>
+            <div class="col-auto">
+                {{ form_widget(formFormation.categories) }}
+            </div>
+        </div>
+        <div class="row auto">
+            {{ form_label(formFormation.description) }}
+        </div>
+        <div class="row auto">
+            {{ form_widget(formFormation.description) }}
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                {{ form_widget(formFormation.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(formFormation) }}
