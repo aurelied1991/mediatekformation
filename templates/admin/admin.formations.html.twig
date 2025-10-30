@@ -98,16 +98,16 @@
                     {# Miniature avec lien vers la page de formation #}
                     <td class="text-center">
                         {% if formation.miniature %}
-                    af        <a href="{{ path('admin.formations.showone', {id:formation.id}) }}">
+                            <a href="{{ path('admin.formations.showone', {id:formation.id}) }}">
                                 <img src="{{ formation.miniature }}"alt="Miniature de la formation">
                             </a>
                         {% endif %}
                     </td>
                     {# Boutons pour supprimer et éditer une formation #}
                     <td>
-                        <!-- Bouton fait appel à méthode "edit" et envoit l'id de la visite et permet d'arriver sur page de modification-->
+                        <!-- Bouton fait appel à méthode "edit" et envoit l'id de la formation et permet d'arriver sur page de modification -->
                         <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-secondary">Editer</a>
-                        <!-- Bouton fait appel à méthode "suppr" et envoit l'id de la visite-->
+                        <!-- Bouton fait appel à méthode "suppr" et envoit l'id de la formation -->
                         <a href="{{ path('admin.formation.delete', {id:formation.id}) }}" class="btn btn-danger mt-1" onclick="return confirm('Etes-vous sûr de vouloir supprimer {{formation.title}} ?');">Supprimer</a>
                     </td>
                 </tr>

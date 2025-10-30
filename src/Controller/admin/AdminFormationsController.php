@@ -46,7 +46,7 @@ class AdminFormationsController extends AbstractController
         $this->formationRepository = $formationRepository;
         $this->categorieRepository = $categorieRepository;
     }
-
+    
     /**
      * Affiche la liste complète des formations avec leurs catégories
      * @return Response
@@ -161,16 +161,34 @@ class AdminFormationsController extends AbstractController
         $formation = $this->formationRepository->find($id);
         //Permet d'appeler la méthode 'remove' du repository
         $this->formationRepository->remove($formation);
+        $this->addFlash('success', 'La formation a bien été supprimée');
         //Permet de rediriger une route après l'opération
         return $this->redirectToRoute('admin.formations');
     }
     
+    /**
+     * Permet d'afficher le détail d'une formation spécifique
+     * @param type $id Identifiant de la formation
+     * @return Response Retourne la page de détail de la formation
+     */
     #[Route('/admin/formations/formation/{id}', name: 'admin.formations.showone')]
     public function showOne($id): Response
     {
+        //Récupérer formation correspondante à l'id
         $formation = $this->formationRepository->find($id);
+        //Transmet à la vue les données de la formation sélectionnée
         return $this->render("admin/admin.formation.html.twig", [
             'formation' => $formation
         ]);
+    }
+    
+    /**
+     * Affiche la page des conditions générales d'utilisation
+     * @return Response Contient la page CGU
+     */
+    #[Route('/admin/cgu', name: 'admin.cgu')]
+    public function adminCgu(): Response
+    {
+    return $this->render("pages/cgu.html.twig");
     }
 }

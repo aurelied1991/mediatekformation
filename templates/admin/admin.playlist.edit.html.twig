@@ -1,0 +1,24 @@
+{% extends "baseadmin.html.twig" %}
+
+{% block body %}
+    <h2 class="mb-4 text-center"> Modification d'une playlist </h2>
+    {# Inclusion du formulaire pour modifier la playlist #}
+    {{ include('_admin.playlist.form.html.twig') }}
+    {# Vérifier s'il y a des formations associées à cette playlist #}
+    {% if formations|length > 0 %}
+        <h4 class="mt-4">Formations de cette playlist :</h4>
+        {# Affichage des formations de la playlist sous forme de liste #}
+        <ul class="list-group">
+            {% for formation in formations %}
+                {# Lien vers la page qui détaille la formation #}
+                <li class="list-group-item">
+                    <a href="{{ path('formations.showone', { id: formation.id }) }}" class="text-decoration-none text-info">
+                    {{ formation.title }} </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {# Message si la playlist n'a aucune formation #}
+        <p class="text-muted">Pas de formation pour cette playlist.</p>
+    {% endif %}
+{% endblock %}

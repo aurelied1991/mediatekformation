@@ -7,21 +7,36 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Repository pour l'entité Formation
  * @extends ServiceEntityRepository<Formation>
  */
 class FormationRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructeur du repository
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Formation::class);
     }
 
+    /**
+     * Ajoute une formation à la base de données
+     * @param Formation $entity
+     * @return void
+     */
     public function add(Formation $entity): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Supprime une formation à la base de données
+     * @param Formation $entity
+     * @return void
+     */
     public function remove(Formation $entity): void
     {
         $this->getEntityManager()->remove($entity);
@@ -29,10 +44,10 @@ class FormationRepository extends ServiceEntityRepository
     }
 
     /**
-     * Retourne toutes les formations triées sur un champ
-     * @param type $champ
-     * @param type $ordre
-     * @param type $table si $champ dans une autre table
+     * Retourne toutes les formations triées sur un champ donné
+     * @param type $champ Champ sur lequel trié
+     * @param type $ordre Ordre du tri
+     * @param type $table Nom table si $champ dans une autre table
      * @return Formation[]
      */
     public function findAllOrderBy($champ, $ordre, $table=""): array
@@ -52,10 +67,10 @@ class FormationRepository extends ServiceEntityRepository
     }
 
     /**
-     * Enregistrements dont un champ contient une valeur
+     * Retourne les formations dont un champ contient une valeur
      * ou tous les enregistrements si la valeur est vide
-     * @param type $champ
-     * @param type $valeur
+     * @param type $champ Champ à rechercher
+     * @param type $valeur Valeur à rechercher
      * @param type $table si $champ dans une autre table
      * @return Formation[]
      */
@@ -83,8 +98,8 @@ class FormationRepository extends ServiceEntityRepository
     }
     
     /**
-     * Retourne les n formations les plus récentes
-     * @param type $nb
+     * Retourne les formations les plus récentes
+     * @param type $nb Nombre de formations à retourner
      * @return Formation[]
      */
     public function findAllLasted($nb) : array

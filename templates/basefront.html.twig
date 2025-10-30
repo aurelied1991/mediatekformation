@@ -4,11 +4,11 @@
 {% block stylesheets %}{% endblock %}
 {% block top %}
     <div class="container">
-        <!-- titre -->
+        {# titre #}
         <div class="text-left">
             <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" alt = "Logo MediaTek86">
         </div>
-        <!-- menu -->
+        {# menu #}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -23,7 +23,15 @@
                     </li>                    
                 </ul>
             </div>
-        </nav>        
+        </nav>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}
 {% block body %}{% endblock %}

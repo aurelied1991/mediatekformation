@@ -14,7 +14,7 @@
                 <ul class="navbar-nav mr-auto">
                         <a class="nav-link" href="{{ path("admin.formations") }}">Formations</a>
                     <li>
-                        <a class="nav-link" href="#">Playlists</a>
+                        <a class="nav-link" href="{{ path("admin.playlists") }}">Playlists</a>
                     </li>
                     <li>
                         <a class="nav-link" href="#">Catégories</a>
@@ -24,6 +24,14 @@
                 </ul>
             </div>
         </nav>
+        {% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endfor %}
     </div>
 {% endblock %}
 {% block body %}{% endblock %}
@@ -32,9 +40,8 @@
         <footer>
             <hr>
             <p><small><em>
-                Consultez nos <a class="link-secondary" href="{{ path('cgu') }}">Conditions Générales d'Utilisation</a>
+                Consultez nos <a class="link-secondary" href="{{ path('admin.cgu') }}">Conditions Générales d'Utilisation</a>
             </em></small></p>
-            
         </footer>
     </div>
 {% endblock %}

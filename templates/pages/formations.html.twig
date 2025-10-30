@@ -1,9 +1,15 @@
+{# Affiche la liste de l'ensemble des formations disponibles sur le site #}
 {% extends "basefront.html.twig" %}
 {% block body %}
+    <p class="mt-3">
+        <h3>Formations</h3>
+    </p>
+    {# Tableau principal contenant toutes les formations #}
     <table class="table table-striped">
         <caption class="visually-hidden">Tableau des formations avec nom, playlist, catégories, date</caption>
         <thead>
             <tr>
+                {# Colonne 1 : nom formation, tri et filtre #}
                 <th class="text-left align-top w-30" scope="col">
                     Formation<br />
                     <a href="{{ path('formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -17,6 +23,7 @@
                         </div>
                     </form>                    
                 </th>
+                {# Colonne 2 : nom playlist associée, tri et filtre #}
                 <th class="text-left align-top" scope="col">
                     Playlists<br />
                     <a href="{{ path('formations.sort', {table:'playlist', champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -30,6 +37,7 @@
                         </div>
                     </form>
                 </th>
+                {# Colonne 3 : Catégories (filtrable via menu déroulant) #}
                 <th class="text-left align-top" scope="col">
                     Catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'id', table:'categories'}) }}">
@@ -46,6 +54,7 @@
                         </select>                    
                     </form>            
                 </th>
+                {# Colonne 4 : Date de publication et tri #}
                 <th class="text-center align-top" scope="col">
                     Date<br />
                     <a href="{{ path('formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -56,6 +65,7 @@
                 </th>
             </tr>
         </thead>
+        {# Corps du tableau : affichage de chaque formation #}
         <tbody>
             {% for formation in formations %}
                 <tr class="align-middle">

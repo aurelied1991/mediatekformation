@@ -7,21 +7,36 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Repository pour l'entité Playlist
  * @extends ServiceEntityRepository<Playlist>
  */
 class PlaylistRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructeur du repository
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Playlist::class);
     }
 
+    /**
+     * Ajouter une playlist à la base de données
+     * @param Playlist $entity
+     * @return void
+     */
     public function add(Playlist $entity): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Supprimer une playlist de la base de données
+     * @param Playlist $entity
+     * @return void
+     */
     public function remove(Playlist $entity): void
     {
         $this->getEntityManager()->remove($entity);
@@ -30,9 +45,8 @@ class PlaylistRepository extends ServiceEntityRepository
 
     /**
      * Retourne toutes les playlists triées sur le nom de la playlist
-     * @param type $champ
      * @param type $ordre
-     * @return Playlist[]
+     * @return array
      */
     public function findAllOrderByName($ordre): array
     {
@@ -45,7 +59,7 @@ class PlaylistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Enregistrements dont un champ contient une valeur
+     * Retourne les playlists dont un champ contient une valeur
      * ou tous les enregistrements si la valeur est vide
      * @param type $champ
      * @param type $valeur
@@ -81,8 +95,7 @@ class PlaylistRepository extends ServiceEntityRepository
     
     /**
      * Méthode renvoyant un tableau de playlists triées selon le nombre de formations incluses
-     * $ordre contient choix ASC/DESC
-     * @param type $ordre
+     * @param type $ordre ASC OU DESC
      * @return array
      */
     public function findAllOrderByNbFormations($ordre): array

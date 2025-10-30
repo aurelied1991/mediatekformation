@@ -1,3 +1,4 @@
+{# Affiche la page d'accueil #}
 {% extends "basefront.html.twig" %}
 
 {% block body %}
@@ -14,6 +15,7 @@
     <p>
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
         <table class="table">
+            {# Caption invisible pour accessibilité (lecteurs d’écran) #}
             <caption class="visually-hidden">Tableau pour afficher les deux dernières formations ajoutées avec photo, date, nom, catégories, playlist</caption>
             <thead class="visually-hidden">
                 <tr>
@@ -23,11 +25,12 @@
             </thead>
             <tbody>
                 <tr>
+                    {# Boucle sur les formations à afficher #}
                     {% for formation in formations %}
                         <td>
                             <div class="row">
                                 <div class="col">
-                                    <!-- emplacement photo -->
+                                    {# Affichage de la miniature cliquable si disponible #}
                                     {% if formation.picture %}
                                         <a href="{{ path('formations.showone', {id:formation.id}) }}">
                                         <img src="{{ formation.picture }}"

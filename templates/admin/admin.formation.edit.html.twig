@@ -2,5 +2,31 @@
 
 {% block body %}
     <h2 class="mb-4 text-center"> Modification d'une formation </h2>
+    {# Inclusion du formulaire pour modifier une formation #}
     {{ include('_admin.formation.form.html.twig') }}
+    
+    {# Vérifie si des formations sont définies et non vides pour cette playlist #}
+    {% if formations is defined and formations|length > 0 %}
+        {# Affichage des formations de cette playlist #}
+        <h4 class="mt-5">Formations de cette playlist :</h4>
+        <table class="table table-striped">
+            <caption class="visually-hidden">Tableau listant les titres des formations de cette playlist</caption>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# Boucle sur toutes les formations et affichage de leur titre #}
+                {% for k in 0..formations|length-1 %}
+                    <tr>
+                        <td>{{ formations[k].title }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {# Message si la playlist n’a pas encore de formation #}
+        <p class="text-muted mt-3">Cette playlist n’a pas encore de formation.</p>
+    {% endif %}
 {% endblock %}

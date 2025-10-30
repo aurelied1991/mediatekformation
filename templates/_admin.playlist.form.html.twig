@@ -1,0 +1,28 @@
+{# Permet d'afficher et positionner le formulaire avec tous les champs #}
+{# form_row(formPlaylist.nomduchamp) permet d'accéder au champ du formulaire #}
+
+{{ form_start(formPlaylist) }}
+<div class="row">
+    <div class="col">
+        <div class="row mb-3">
+            <div class="col-auto">
+                {{ form_label(formPlaylist.name) }}
+            </div>
+            <div class="col-auto">
+                {{ form_widget(formPlaylist.name) }}
+            </div>
+        </div>
+        <div class="row auto">
+            {{ form_label(formPlaylist.description) }}
+        </div>
+        <div class="row auto">
+            {{ form_widget(formPlaylist.description) }}
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                {{ form_widget(formPlaylist.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(formPlaylist) }}
