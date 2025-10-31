@@ -149,7 +149,7 @@ class AdminPlaylistsController extends AbstractController
     #[Route('/admin/playlist/ajout', name: 'admin.playlist.ajout')]
     public function ajout(Request $request): Response
     {
-        //crétation d'un nouvel objet de type Formation
+        //crétation d'un nouvel objet de type Playlist
         $playlist = new Playlist();
         $formPlaylist = $this->createForm(PlaylistType::class, $playlist);
         $formPlaylist->handleRequest($request);

@@ -59,4 +59,32 @@ class CategorieRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
     }
+    
+    /**
+     * Retourne toutes les catégories triées par nom
+     * @return array
+     */
+    public function findAllSorted(): array
+    {
+        return $this->createQueryBuilder('c')
+                    ->orderBy('c.name', 'ASC')
+                    ->getQuery()
+                    ->getResult();
+    }
+    
+    /**
+     * Retourne une catégorie correspondant au nom passé en paramètre
+     * @param string $nom Nom de la catégorie
+     * @return Categorie|null La catégorie trouvée ou null si aucune
+     */
+    public function findOneByName(string $nom): ?Categorie
+    {
+        return $this->createQueryBuilder('c')
+            //LOWER = pour rendre recherche insensible à la casse par ex Test = test
+            ->where('LOWER(c.name) = LOWER(:nom)')
+            ->setParameter('nom', $nom)
+            ->getQuery()
+            //Renvoie null si aucun résultat n'est trouvé
+            ->getOneOrNullResult();
+    }
 }

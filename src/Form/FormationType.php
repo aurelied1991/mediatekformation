@@ -1,4 +1,4 @@
-<?php
+For<?php
 
 namespace App\Form;
 
@@ -94,8 +94,8 @@ class FormationType extends AbstractType
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void
-        {
-            $resolver->setDefaults([
+    {
+        $resolver->setDefaults([
             'data_class' => Formation::class,
         ]);
     }
