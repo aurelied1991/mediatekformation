@@ -17,7 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
  * Contrôleur pour la gestion des catégories côté administrateur
  * @author Aurelie Demange
  */
-class AdminCategoriesController extends AbstractController{
+class AdminCategoriesController extends AbstractController
+{
     /**
      * Accès aux données des formations
      * @var FormationRepository
@@ -40,7 +41,8 @@ class AdminCategoriesController extends AbstractController{
      * @param FormationRepository $formationRepository
      * @param CategorieRepository $categorieRepository
      */
-    public function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository) {
+    public function __construct(FormationRepository $formationRepository, CategorieRepository $categorieRepository)
+    {
         $this->formationRepository = $formationRepository;
         $this->categorieRepository = $categorieRepository;
     }
