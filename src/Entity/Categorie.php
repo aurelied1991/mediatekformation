@@ -30,14 +30,14 @@ class Categorie
     private ?string $name = null;
 
     /**
-     * Formations associées à une catégorie
+     * Formations associées à la catégorie
      * @var Collection<int, Formation>
      */
     #[ORM\ManyToMany(targetEntity: Formation::class, mappedBy: 'categories')]
     private Collection $formations;
 
     /**
-     * Constructeur initialisation la collection de formations
+     * Constructeur qui initialise la collection de formations
      */
     public function __construct()
     {
@@ -45,7 +45,7 @@ class Categorie
     }
 
     /**
-     * Permet de retourner l'identifiant
+     * Permet de retourner l'identifiant de la catégorie
      * @return int|null
      */
     public function getId(): ?int
@@ -63,14 +63,13 @@ class Categorie
     }
 
     /**
-     * Définit nom catégorie
-     * @param string|null $name nNm à attribuer
+     * Définit le nom de la catégorie
+     * @param string|null $name Nom à attribuer
      * @return static
      */
     public function setName(?string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 

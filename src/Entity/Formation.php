@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\FormationRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Entité représentant une formation
@@ -14,7 +17,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
 class Formation
 {
-
     /**
      * Début de chemin vers les images
      */
@@ -31,10 +33,11 @@ class Formation
     
     /**
      * Date de publication de la formation
-     * @var \DateTimeInterface|null
+     * @var DateTimeInterface|null
      */
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $publishedAt = null;
+    #[Assert\LessThanOrEqual("now", message: "La date ne peut pas être postérieure à la date d'aujourd'hui")]
+    private ?DateTimeInterface $publishedAt = null;
 
     /**
      * Titre de la formation
@@ -72,7 +75,7 @@ class Formation
     private Collection $categories;
 
     /**
-     * Constructeur
+     * Constructeur qui initialise la collection des catégories
      */
     public function __construct()
     {
@@ -90,19 +93,19 @@ class Formation
 
     /**
      * Retourne la date de publication
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getPublishedAt(): ?\DateTimeInterface
+    public function getPublishedAt(): ?DateTimeInterface
     {
         return $this->publishedAt;
     }
 
     /**
      * Définit la date de publication
-     * @param \DateTimeInterface|null $publishedAt
+     * @param DateTimeInterface|null $publishedAt
      * @return static
      */
-    public function setPublishedAt(?\DateTimeInterface $publishedAt): static
+    public function setPublishedAt(?DateTimeInterface $publishedAt): static
     {
         $this->publishedAt = $publishedAt;
 

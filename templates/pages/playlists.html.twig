@@ -18,7 +18,7 @@
                             <input type="text" class="sm" name="recherche" 
                                    value="{% if valeur|default and not table|default %}{{ valeur }}{% endif %}">
                             <input type="hidden" name="_token" value="{{ csrf_token('filtre_name') }}">
-                            <button type="submit" class="btn btn-info mb-2 btn-sm">filtrer</button>
+                            <button type="submit" class="btn btn-info mb-2 btn-sm">Filtrer</button>
                         </div>
                     </form>                    
                 </th>

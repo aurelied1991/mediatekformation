@@ -45,7 +45,7 @@ class Playlist
     private Collection $formations;
 
     /**
-     * Constructeur de la playlist
+     * Constructeur qui initialise la collection de formations
      */
     public function __construct()
     {
@@ -113,7 +113,7 @@ class Playlist
     }
 
     /**
-     * Permet d'ajouter une formation à une playlist
+     * Ajoute une formation à une playlist
      * @param Formation $formation
      * @return static
      */
@@ -128,7 +128,7 @@ class Playlist
     }
 
     /**
-     * Permet de supprimer une formation de la playlist
+     * Supprime une formation de la playlist
      * @param Formation $formation
      * @return static
      */
