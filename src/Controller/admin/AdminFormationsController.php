@@ -102,7 +102,7 @@ class AdminFormationsController extends AbstractController
     }
     
     /**
-     * Fonction permettant d'ajouter une nouvelle formation
+     * Ajoute une nouvelle formation
      * @param Request $request Requête contenant les données du formulaire
      * @return Response
      */
@@ -124,7 +124,7 @@ class AdminFormationsController extends AbstractController
     }
     
     /**
-     * Fonction permettant de modifier les informations de la formation sélectionnée
+     * Modifie les informations d'une formation existante
      * @param int $id Id de la formation à modifier
      * @param Request $request Requête contenant données du formulaire
      * @return Response
@@ -150,7 +150,7 @@ class AdminFormationsController extends AbstractController
     }
     
     /**
-     * Fonction permettant de supprimer une formation de la base de données
+     * Supprime une formation de la base de données
      * @param int $id Id de la formation à supprimer
      * @return Response
     */
@@ -167,9 +167,9 @@ class AdminFormationsController extends AbstractController
     }
     
     /**
-     * Permet d'afficher le détail d'une formation spécifique
+     * Affiche le détail d'une formation spécifique
      * @param type $id Identifiant de la formation
-     * @return Response Retourne la page de détail de la formation
+     * @return Response
      */
     #[Route('/admin/formations/formation/{id}', name: 'admin.formations.showone')]
     public function showOne($id): Response
@@ -184,7 +184,7 @@ class AdminFormationsController extends AbstractController
     
     /**
      * Affiche la page des conditions générales d'utilisation
-     * @return Response Contient la page CGU
+     * @return Response
      */
     #[Route('/admin/cgu', name: 'admin.cgu')]
     public function adminCgu(): Response

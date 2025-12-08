@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
 namespace App\Form;
 
 use App\Entity\Playlist;
@@ -19,6 +14,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Formulaire permettant de gérer les playlists côté administrateur
+ * Fournit les champs nécessaires pour créer ou éditer une playlist
  * @author Aurelie Demange
  */
 class PlaylistType extends AbstractType
@@ -32,7 +28,7 @@ class PlaylistType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            //Champ du titre, obligatoire avec contrainte NotBlank
+            //Champ du nom de la playlist, obligatoire avec contrainte NotBlank
             ->add('name', TextType::class, [
                 'label' => 'Nom',
                 'required' => true,
@@ -40,7 +36,7 @@ class PlaylistType extends AbstractType
                     new NotBlank(['message' => 'Le titre est obligatoire'])
                 ]
             ])
-            //Champ de la description
+            //Champ de la description de la playlist, facultatif
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => false,
@@ -54,7 +50,7 @@ class PlaylistType extends AbstractType
     
     /**
      * Configuration des options du formulaire
-     * @param OptionsResolver $resolver Définit options par défaut
+     * @param OptionsResolver $resolver Définit les options par défaut
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void

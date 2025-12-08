@@ -1,7 +1,8 @@
+{# Page d'administration pour l'ajout d'une nouvelle formation #}
 {% extends "baseadmin.html.twig" %}
 
 {% block body %}
     <h2 class="mb-4 text-center"> Ajout d'une nouvelle formation </h2>
-    {# Inclusion du formulaire pour ajouter une formation #}
+    {# Inclusion du formulaire pour ajouter une formation et qui contient tous les champs et boutons #}
     {{ include('_admin.formation.form.html.twig') }}
 {% endblock %}

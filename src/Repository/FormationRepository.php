@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Repository pour l'entité Formation
+ * Repository pour l'entité Formation qui fournit des méthodes pour accéder aux formations
  * @extends ServiceEntityRepository<Formation>
  */
 class FormationRepository extends ServiceEntityRepository
@@ -33,7 +33,7 @@ class FormationRepository extends ServiceEntityRepository
     }
 
     /**
-     * Supprime une formation à la base de données
+     * Supprime une formation de la base de données
      * @param Formation $entity
      * @return void
      */
@@ -46,8 +46,8 @@ class FormationRepository extends ServiceEntityRepository
     /**
      * Retourne toutes les formations triées sur un champ donné
      * @param type $champ Champ sur lequel trié
-     * @param type $ordre Ordre du tri
-     * @param type $table Nom table si $champ dans une autre table
+     * @param type $ordre Ordre du tri (ASC ou DESC)
+     * @param type $table Nom de la table si $champ est dans une autre table
      * @return Formation[]
      */
     public function findAllOrderBy($champ, $ordre, $table=""): array
@@ -98,7 +98,7 @@ class FormationRepository extends ServiceEntityRepository
     }
     
     /**
-     * Retourne les formations les plus récentes
+     * Retourne les $nb formations les plus récemment publiées
      * @param type $nb Nombre de formations à retourner
      * @return Formation[]
      */
@@ -112,8 +112,8 @@ class FormationRepository extends ServiceEntityRepository
     }
     
     /**
-     * Retourne la liste des formations d'une playlist
-     * @param type $idPlaylist
+     * Retourne toutes les formations d'une playlist
+     * @param type $idPlaylist Identifiant de la playlist
      * @return array
      */
     public function findAllForOnePlaylist($idPlaylist): array
@@ -126,5 +126,4 @@ class FormationRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
     }
-    
 }

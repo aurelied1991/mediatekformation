@@ -1,13 +1,14 @@
+{# Page d'administration pour modifier une playlist #}
 {% extends "baseadmin.html.twig" %}
 
 {% block body %}
     <h2 class="mb-4 text-center"> Modification d'une playlist </h2>
-    {# Inclusion du formulaire pour modifier la playlist #}
+    {# Inclusion du formulaire de modification de la playlist #}
     {{ include('_admin.playlist.form.html.twig') }}
     {# Vérifier s'il y a des formations associées à cette playlist #}
     {% if formations|length > 0 %}
         <h4 class="mt-4">Formations de cette playlist :</h4>
-        {# Affichage des formations de la playlist sous forme de liste #}
+        {# Affichage des formations de la playlist#}
         <ul class="list-group">
             {% for formation in formations %}
                 {# Lien vers la page qui détaille la formation #}

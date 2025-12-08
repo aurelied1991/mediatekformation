@@ -1,8 +1,9 @@
-{# Afficher le détail d'une formation #}
+{# Page de détail d'une formation #}
+
 {% block body %}
     <div class="row mt-3">
         <div class="col">
-            {# Vérifie si une vidéo est associée à la formation #}
+            {# Affiche de la vidéo youtube s'il y en a une #}
             {% if formation.videoid %}
                 <div style="width: 560px; height: 315px; float: none; clear: both; margin: 2px auto;">
                   <embed
@@ -18,6 +19,7 @@
             {% endif %}
         </div>
         <div class="col">
+            {# Informations détaillées de la formation #}
             {{ formation.publishedatstring }}
             <h4 class="text-info mt-5">{{ formation.title }}</h4>
             <strong>playlist : </strong>{{ formation.playlist.name }}<br />

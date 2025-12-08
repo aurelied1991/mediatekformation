@@ -19,12 +19,13 @@ use Symfony\Component\Validator\Constraints\LessThanOrEqual;
 
 /**
  * Formulaire permettant de gérer les formations côté administrateur
- * @author Aurélie Demange
+ * Fournit les champs nécessaires pour créer ou éditer une formation
+ * @author Aurelie Demange
  */
 class FormationType extends AbstractType
 {
     /**
-     * Construction du formulaire
+     * Construction du formulaire avec tous les champs nécessaires
      * @param FormBuilderInterface $builder Objet permettant de construire le formulaire
      * @param array $options Tableau d'options pour le formulaire
      * @return void
@@ -32,7 +33,7 @@ class FormationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            //Champ du titre, obligatoire avec contrainte NotBlank
+            //Champ du titre de la formation, obligatoire avec contrainte NotBlank
             ->add('title', TextType::class, [
                 'label' => 'Titre',
                 'required' => true,
@@ -40,15 +41,15 @@ class FormationType extends AbstractType
                     new NotBlank(['message' => 'Le titre est obligatoire'])
                 ]
             ])
-            //Champ de la description
+            //Champ de la description de la formation, facultatif
             ->add('description', TextareaType::class, [
                 'required' => false,
                 'attr' => ['rows' => 5]
             ])
-            // Champ de la date, obligatoire et ne doit pas être postérieure à la date du jour
+            // Champ de la date de publication, obligatoire et ne doit pas être postérieure à la date du jour
             ->add('published_at', DateType::class, [
                 'widget' => 'single_text',
-                //Initialise le champ à la date du jour s'il ne comporte pas déjà une date
+                //Initialise à la date du jour s'il ne comporte pas déjà une date
                 'data' => isset($options['data']) && $options['data']
                     ->getPublishedAt() != null ? $options['data']->getPublishedAt() : new DateTime('now'),
                 'label' => 'Date',
@@ -61,7 +62,7 @@ class FormationType extends AbstractType
                     ]),
                 ],
             ])
-            //Champ catégories : affiche liste à choix multiples liés à l'entity 'Categorie'
+            //Champ categories : liste à choix multiples basés sur l'entity Categorie
             ->add('categories', EntityType::class, [
                 'class' => Categorie::class,
                 'label' => 'Catégories',
@@ -72,7 +73,7 @@ class FormationType extends AbstractType
                     'size' => 3  // montre 3 lignes visibles dans le select
                 ]
             ])
-            //afficher liste à choix multiples liés à l'entity 'Playlist'
+            //Champ playlist : liste à choix multiples liés à l'entity Playlist
             ->add('playlist', EntityType::class, [
                 'class' => Playlist::class,
                 'choice_label' => 'name',
@@ -90,7 +91,7 @@ class FormationType extends AbstractType
     
     /**
      * Configuration des options du formulaire
-     * @param OptionsResolver $resolver Définit options par défaut
+     * @param OptionsResolver $resolver Définit les options par défaut
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void

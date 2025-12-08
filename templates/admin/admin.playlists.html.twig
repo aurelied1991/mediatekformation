@@ -1,3 +1,4 @@
+{# Page d'administration pour gérer l'ensemble des playlists #}
 {% extends "baseadmin.html.twig" %}
 
 {% block body %}
@@ -14,9 +15,9 @@
         <caption class="visually-hidden">Tableau des playlists avec nom et catégories</caption>
         <thead>
             <tr>
+                {# Colonne du nom de la playlist avec tri et filtre #}
                 <th class="text-left align-top" scope="col">
                     Playlist<br />
-                    {# Tri ASC et DESC sur le nom de la playlist #}
                     <a href="{{ path('admin.playlists.sort', {champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('admin.playlists.sort', {champ:'name', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                     {# Formulaire pour filtrer les playlists par nom #}
@@ -29,15 +30,15 @@
                         </div>
                     </form>                    
                 </th>
+                {# Colonne du nombre de formations incluses avec tri #}
                 <th class="text-left align-top" scope="col">
                     Nombre de formations incluses </br>
-                    {# Tri ASC et DESC sur le nombre de formations #}
                     <a href="{{ path('admin.playlists.sort', {champ:'nbFormations', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('admin.playlists.sort', {champ:'nbFormations', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                 </th>
+                {# Colonne des catégories avec filtre via menu déroulant #}
                 <th class="text-left align-top" scope="col">
                     Catégories
-                    {# Filtre des playlists par catégorie #}
                     <form class="form-inline mt-1" method="POST" action="{{ path('admin.playlists.findallcontain', {champ:'id', table:'categories'}) }}">
                         <select class="form-select form-select-sm" name="recherche" id="recherche" onchange="this.form.submit()">
                             <option value=""></option>
@@ -52,13 +53,14 @@
                         </select>                    
                     </form>            
                 </th>
+                {# Colonne des actions (modification et suppression) #}
                 <th class="text-center align-top" scope="col">
                     &nbsp;
                 </th>				
             </tr>
         </thead>
         <tbody>
-            {# Vérifie s'il y a des playlists à afficher #}
+            {# Vérifie s'il y a la présence de playlists #}
             {% if playlists|length > 0 %}
                 {% for k in 0..playlists|length-1 %}
                     <tr class="align-middle">
@@ -68,7 +70,7 @@
                                 {{ playlists[k].name }}
                             </h5>
                         </td>
-                        {# Nombre de formations dans la playlist #}
+                        {# Nombre de formations associées #}
                         <td>
                             {{ playlists[k].formations|length }}
                         </td>
@@ -81,15 +83,13 @@
                                 {% endfor %}
                             {% endif %}
                         </td>
-                        {# Lien pour voir le détail de la playlist #}                        
+                        {# Lien vers le détail de la playlist #}                        
                         <td class="text-center">
                             <a href="{{ path('admin.playlists.showone', {id:playlists[k].id}) }}" class="btn btn-info">Voir détail</a>
                         </td>
                         {# Boutons pour supprimer et éditer une playlist #}
                         <td>
-                            {# Bouton fait appel à méthode "edit" et envoit l'id de la playlist et permet d'arriver sur page de modification #}
                             <a href="{{ path('admin.playlist.edit', {id:playlists[k].id}) }}" class="btn btn-secondary">Editer</a>
-                            {# Bouton fait appel à méthode "suppr" et envoit l'id de la playlist #}
                             <a href="{{ path('admin.playlist.delete', {id:playlists[k].id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de vouloir supprimer {{playlists[k].name}} ?');">Supprimer</a>
                         </td>
                     </tr>

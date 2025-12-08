@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Repository pour l'entité Playlist
+ * Repository pour l'entité Playlist qui fournit des méthodes pour accéder aux playlists
  * @extends ServiceEntityRepository<Playlist>
  */
 class PlaylistRepository extends ServiceEntityRepository
@@ -22,7 +22,7 @@ class PlaylistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Ajouter une playlist à la base de données
+     * Ajoute une playlist à la base de données
      * @param Playlist $entity
      * @return void
      */
@@ -33,7 +33,7 @@ class PlaylistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Supprimer une playlist de la base de données
+     * Supprime une playlist de la base de données
      * @param Playlist $entity
      * @return void
      */
@@ -44,8 +44,8 @@ class PlaylistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Retourne toutes les playlists triées sur le nom de la playlist
-     * @param type $ordre
+     * Retourne toutes les playlists triées par nom
+     * @param type $ordre Ordre de tri : ASC ou DESC
      * @return array
      */
     public function findAllOrderByName($ordre): array
@@ -60,10 +60,10 @@ class PlaylistRepository extends ServiceEntityRepository
 
     /**
      * Retourne les playlists dont un champ contient une valeur
-     * ou tous les enregistrements si la valeur est vide
-     * @param type $champ
-     * @param type $valeur
-     * @param type $table si $champ dans une autre table
+     * ou tous les enregistrements triés par nom ASC si la valeur est vide
+     * @param type $champ Champ à rechercher
+     * @param type $valeur Valeur à rechercher
+     * @param type $table Nom de la table si le champ est dans une autre table
      * @return Playlist[]
      */
     public function findByContainValue($champ, $valeur, $table=""): array
@@ -94,8 +94,8 @@ class PlaylistRepository extends ServiceEntityRepository
     }
     
     /**
-     * Méthode renvoyant un tableau de playlists triées selon le nombre de formations incluses
-     * @param type $ordre ASC OU DESC
+     * Retourne toutes les playlists triées par nombre de formations incluses
+     * @param type $ordre Ordre de tri : ASC OU DESC
      * @return array
      */
     public function findAllOrderByNbFormations($ordre): array

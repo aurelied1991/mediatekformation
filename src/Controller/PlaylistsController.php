@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Contrôleur gérant playlists
+ * Contrôleur gérant les playlists
  * Permet l'affichage de l'ensemble des playlists et le détail de chaque playlist, de faire des tris, des recherches
  * @author emds
  */
@@ -40,7 +40,7 @@ class PlaylistsController extends AbstractController
     private const PAGE_PLAYLISTS = 'pages/playlists.html.twig';
     
     /**
-     * Constructeur
+     * Constructeur du contrôleur
      * @param PlaylistRepository $playlistRepository
      * @param CategorieRepository $categorieRepository
      * @param FormationRepository $formationRespository
@@ -63,7 +63,9 @@ class PlaylistsController extends AbstractController
     #[Route('/playlists', name: 'playlists')]
     public function index(): Response
     {
+        //Récupération de toutes les playlists triées par nom ASC
         $playlists = $this->playlistRepository->findAllOrderByName('ASC');
+        //Récupération de toutes les catégories
         $categories = $this->categorieRepository->findAll();
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
@@ -72,10 +74,9 @@ class PlaylistsController extends AbstractController
     }
 
     /**
-     * Méthode qui permet de trier par ordre ASC ou DESC selon le nom
-     * ou le nombre de formations par playlist
-     * @param type $champ Champ à trier
-     * @param type $ordre Ordre de tri
+     * Trie les playlists selon le champ demandé
+     * @param type $champ Champ à trier : 'name' pour trier par nom, 'nbFormations' par nombre de formations
+     * @param type $ordre Ordre de tri (ASC ou DESC)
      * @return Response Page des playlists
      */
     #[Route('/playlists/tri/{champ}/{ordre}', name: 'playlists.sort')]
@@ -85,15 +86,13 @@ class PlaylistsController extends AbstractController
             //Si tri est demandé sur le nom des playslists, appel de la méthode findAllOrderByName
             $playlists = $this->playlistRepository->findAllOrderByName($ordre);
         } elseif ($champ === 'nbFormations') {
-            //Si tri est demandé sur nombre de formations, appel de la méthode concernée du Repository
+            //Si tri est demandé sur nombre de formations, appel de la méthode findAllOrderByNbFormations
             $playlists = $this->playlistRepository->findAllOrderByNbFormations($ordre);
         } else {
-            //Si le champ est inconnu, on retourne toute la playlist par nom croissant pour éviter erreur
+            //Si le champ est inconnu, tri par le nom des playlists (ASC)
             $playlists = $this->playlistRepository->findAllOrderByName('ASC');
         }
-        //On récupère la liste des catégories pour l'affichage
         $categories = $this->categorieRepository->findAll();
-        //On envoie à la vue les playlists avec un tri applicable
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
             'categories' => $categories
@@ -101,9 +100,9 @@ class PlaylistsController extends AbstractController
     }
     
     /**
-     * Permet de rechercher les playlists contenant une valeur spécifique dans un champ donné
-     * @param type $champ Champ à rechercher
-     * @param Request $request Contient valeur à rechercher
+     * Permet de rechercher les playlists contenant une valeur précise dans un champ spécifié
+     * @param type $champ Champ dans lequel rechercher
+     * @param Request $request Requête qui contient la valeur à rechercher
      * @param type $table Table concernée
      * @return Response Page avec résultat des recherches
      */
@@ -122,7 +121,7 @@ class PlaylistsController extends AbstractController
     }
     
     /**
-     * Permet d'afficher les détails d'une playlist
+     * Affiche les détails d'une playlist
      * @param type $id Identifiant de la playlist à afficher
      * @return Response Page de la playlist détaillée
      */

@@ -13,37 +13,37 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Contrôleur de gestion des playlists : affichage, tri, recherche, ajout, modification
+ * Contrôleur pour la gestion des playlists côté administrateur : affichage, tri, recherche, ajout, modification
  * et suppression
- * @author Aurélie Demange
+ * @author Aurelie Demange
  */
 class AdminPlaylistsController extends AbstractController
 {
     /**
-     * Permet d'accéder aux données des playlists
+     * Repository pour accéder aux données des playlists
      * @var PlaylistRepository
      */
     private $playlistRepository;
     
     /**
-     * Permet d'accéder aux données des formations
+     * Repository pour accéder aux données des formations
      * @var FormationRepository
      */
     private $formationRepository;
     
     /**
-     * Permet d'accéder aux données des catégories
+     * Repository pour accéder aux données des catégories
      * @var CategorieRepository
      */
     private $categorieRepository;
     
     /**
-     * Chemin de la page twig qui affiche les playlists côté administrateur
+     * Constante contenant le chemin vers le template affichant la liste des playlists
      */
     private const PAGE_PLAYLISTS = 'admin/admin.playlists.html.twig';
     
     /**
-     * Constructeur
+     * Constructeur du contrôleur avec l'initialisation des trois repository
      * @param PlaylistRepository $playlistRepository
      * @param FormationRepository $formationRepository
      * @param CategorieRepository $categorieRepository
@@ -59,8 +59,8 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Permet d'afficher la liste des playlists avec leurs catégories
-     * @return Response Page de gestion des playlists
+     * Affiche la liste des playlists avec leurs catégories
+     * @return Response
      */
     #[Route('/admin/playlists', name: 'admin.playlists')]
     public function index(): Response
@@ -74,11 +74,10 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Méthode qui permet de trier par ordre ASC ou DESC selon le nom
-     * ou le nombre de formations par playlist
+     * Permet de trier les playlists selon un champ et un ordre
      * @param type $champ Champ à trier
-     * @param type $ordre Ordre du tri
-     * @return Response Page des playlists triées
+     * @param type $ordre Ordre du tri (ASC ou DESC)
+     * @return Response
      */
     #[Route('/admin/playlists/tri/{champ}/{ordre}', name: 'admin.playlists.sort')]
     public function sort($champ, $ordre): Response
@@ -90,12 +89,12 @@ class AdminPlaylistsController extends AbstractController
             //Si tri est demandé sur nombre de formations, appel de la méthode concernée du Repository
             $playlists = $this->playlistRepository->findAllOrderByNbFormations($ordre);
         } else {
-            //Si le champ est inconnu, on retourne toute la playlist par nom croissant pour éviter erreur
+            //Si le champ est inconnu, tri par défaut pour éviter les erreurs
             $playlists = $this->playlistRepository->findAllOrderByName('ASC');
         }
-        //On récupère la liste des catégories pour l'affichage
+        //Récupération de la liste des catégories pour l'affichage
         $categories = $this->categorieRepository->findAll();
-        //On envoie à la vue les playlists avec un tri applicable
+        //Affichage de la page avec les playlists triées
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
             'categories' => $categories
@@ -103,11 +102,11 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Permet de rechercher des playlists contenant une valeur spécifique
+     * Permet de rechercher des playlists contenant une valeur saisie spécifique
      * @param type $champ Champ à rechercher
-     * @param Request $request Contient la valeur à rechercher
+     * @param Request $request Valeur à rechercher
      * @param type $table Table concernée
-     * @return Response Page des playslists avec le résultat de la recherche
+     * @return Response
      */
     #[Route('/admin/playlists/recherche/{champ}/{table}', name: 'admin.playlists.findallcontain')]
     public function findAllContain($champ, Request $request, $table=""): Response
@@ -124,9 +123,9 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Permet d'afficher le détail d'une playlist avec ses catégories et formations
+     * Affiche le détail d'une playlist avec ses catégories et formations
      * @param type $id Identifiant de la playlist à afficher
-     * @return Response Page détaillée de la playlist
+     * @return Response
      */
     #[Route('/admin/playlists/playlist/{id}', name: 'admin.playlists.showone')]
     public function showOne($id): Response
@@ -142,9 +141,9 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Permet d'ajouter une nouvelle playlist
+     * Permet l'ajout d'une nouvelle playlist
      * @param Request $request Requête contenant les données du formulaire
-     * @return Response Page des playlists si valide ou page du formulaire si pas valide
+     * @return Response
      */
     #[Route('/admin/playlist/ajout', name: 'admin.playlist.ajout')]
     public function ajout(Request $request): Response
@@ -164,26 +163,28 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Permet de modifier les informations de la playlist sélectionnée
+     * Permet la modification d'une playlist existante
      * @param int $id Id de la playlist à modifier
      * @param Request $request Requête contenant données du formulaire
-     * @return Response Page des playlists si valide ou page du formulaire si pas valide
+     * @return Response
      */
     #[Route('/admin/playlist/edit/{id}', name: 'admin.playlist.edit')]
     public function edit(int $id, Request $request): Response
     {
+        //Récupération de la playlist à modifier
         $playlist = $this->playlistRepository->find($id);
-        //Créer un objet qui va contenir les infos du formulaire
+        //Création du formulaire pré-rempli avec les données existantes de la playlist
         $formPlaylist = $this->createForm(PlaylistType::class, $playlist);
-        //Le formulaire tente de récupérer la requête avec handleRequest
+        //Récupération des données saisies
         $formPlaylist->handleRequest($request);
+        //Vérifie si le formulaire est soumis et valide
         if ($formPlaylist->isSubmitted() && $formPlaylist->isValid()) {
-            //Appel de la méthode add du repository et les modifs seront enregistrées dans la bdd
+            //Appel de la méthode add du repository et les modifications seront enregistrées dans la bdd
             $this->playlistRepository->add($playlist);
-            //Redirection vers la liste des formations
+            //Redirection vers la liste des playlists
             return $this->redirectToRoute('admin.playlists');
         }
-        // Récupérer les formations liées à cette playlist
+        // Récupération des formations liées à cette playlist
         $formations = $this->formationRepository->findAllForOnePlaylist($id);
 
         return $this->render("admin/admin.playlist.edit.html.twig", [
@@ -194,25 +195,26 @@ class AdminPlaylistsController extends AbstractController
     }
     
     /**
-     * Permet de supprimer une playlist de la base de données si elle ne contient aucune formation
+     * Supprime une playlist de la base de données si elle ne contient aucune formation
      * @param int $id Id de la playlist à supprimer
-     * @return Response Page de gestion des playlists
+     * @return Response
     */
     #[Route('/admin/playlist/delete/{id}', name: 'admin.playlist.delete')]
      public function suppr(int $id): Response
      {
-        //Permet de récupérer l'objet playlist correspondant à id reçu en paramètr
+        //Récupération de la playlist correspondante à id reçu en paramètre
         $playlist = $this->playlistRepository->find($id);
-        //Récupérer les formations de la playlist
+        //Récupération des formations associées à la playlist
         $formations = $this->formationRepository->findAllForOnePlaylist($id);
+        //Vérifie si la playlist ne contient aucune formation
         if (count($formations) === 0) {
-            //Permet d'appeler la méthode 'remove' du repository
+            //Suppression de la playlist
             $this->playlistRepository->remove($playlist);
             $this->addFlash('success', 'La playlist a bien été supprimée.');
         } else {
+        //Message d'erreur si la playlist contient des formations
         $this->addFlash('danger', 'Impossible de supprimer une playlist contenant des formations.');
         }
-        //Permet de rediriger une route après l'opération
         return $this->redirectToRoute('admin.playlists');
     }
 }

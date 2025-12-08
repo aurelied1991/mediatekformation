@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Form;
 
 use App\Entity\Categorie;
@@ -13,7 +12,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 /**
- * Formulaire pour gérer l'ajout des catégories
+ * Formulaire permettant de gérer les catégories côté administrateur
  * @author Aurelie Demange
  */
 
@@ -21,13 +20,14 @@ class CategorieType extends AbstractType
 {
     /**
      * Construction du formulaire
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param FormBuilderInterface $builder Objet permettant de construire le formulaire
+     * @param array $options Options du formulaire
      * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            //Champ du nom, obligatoire avec la contrainte NotBlank
             ->add('name', TextType::class, [
                 'label' => 'Nom : ',
                 'required' => true,
@@ -43,7 +43,7 @@ class CategorieType extends AbstractType
     
     /**
      * Configuration des options du formulaire
-     * @param OptionsResolver $resolver
+     * @param OptionsResolver $resolver Définit les options par défaut
      * @return void
      */
     public function configureOptions(OptionsResolver $resolver): void

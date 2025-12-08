@@ -1,7 +1,8 @@
-{# Affiche la page d'accueil #}
+{# Affiche la page d'accueil du site MediaTek86 #}
 {% extends "basefront.html.twig" %}
 
 {% block body %}
+    {# Introduction et présentation du site #}
     <p class="mt-3">
         <h3>Bienvenue sur le site de MediaTek86 consacré aux formations en ligne</h3>
     </p>
@@ -12,10 +13,11 @@
         En cliquant sur la capture, vous accèderez à la présentation plus détaillée de la formation ainsi que la vidéo correspondante.<BR />
         Vous pouvez aussi retrouver les vidéos regroupées dans des playlists, dans la partie <strong><a href="{{ path('playlists') }}" class="link-info">Playlists</a></strong>.
     </p>
+    {# Affichage des deux dernières formations publiées #}
     <p>
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
         <table class="table">
-            {# Caption invisible pour accessibilité (lecteurs d’écran) #}
+            {# Caption invisible pour l'accessibilité (lecteurs d’écran) #}
             <caption class="visually-hidden">Tableau pour afficher les deux dernières formations ajoutées avec photo, date, nom, catégories, playlist</caption>
             <thead class="visually-hidden">
                 <tr>
@@ -30,7 +32,7 @@
                         <td>
                             <div class="row">
                                 <div class="col">
-                                    {# Affichage de la miniature cliquable si disponible #}
+                                    {# Miniature cliquable si disponible #}
                                     {% if formation.picture %}
                                         <a href="{{ path('formations.showone', {id:formation.id}) }}">
                                         <img src="{{ formation.picture }}"

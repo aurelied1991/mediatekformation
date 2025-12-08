@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Repository pour l'entité catégorie
+ * Repository pour l'entité Categorie qui fournit des méthodes pour accéder aux catégories
  * @extends ServiceEntityRepository<Categorie>
  */
 class CategorieRepository extends ServiceEntityRepository

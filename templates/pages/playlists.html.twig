@@ -4,6 +4,7 @@
     <p class="mt-3">
         <h3>Playlists</h3>
     </p>
+    {# Tableau principal des playlists avec les tris et filtres #}
     <table class="table table-striped">
         <caption class="visually-hidden">Tableau des playlists avec nom et catégories</caption>
         <thead>
@@ -22,13 +23,13 @@
                         </div>
                     </form>                    
                 </th>
-                {# Colonne pour le nombre de formations par playlist et un tri dessus #}
+                {# Colonne pour le nombre de formations par playlist avec un tri possible #}
                 <th class="text-left align-top" scope="col">
                     Nombre de formations incluses </br>
                     <a href="{{ path('playlists.sort', {champ:'nbFormations', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('playlists.sort', {champ:'nbFormations', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>
                 </th>
-                {# Catégories existantes, filtre par catégorie #}
+                {# Colonne pour les catégories existantes avec un filtre via menu déroulant #}
                 <th class="text-left align-top" scope="col">
                     Catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('playlists.findallcontain', {champ:'id', table:'categories'}) }}">
@@ -45,13 +46,14 @@
                         </select>                    
                     </form>            
                 </th>
+                {# Colonne avec le lien vers le détail de la playlist #}
                 <th class="text-center align-top" scope="col">
                     &nbsp;
                 </th>				
             </tr>
         </thead>
+        {# Corps du tableau : affichage de l'ensemble des playlists existantes #}
         <tbody>
-            {# boucle sur les playlists pour les afficher #}
             {% if playlists|length > 0 %}
                 {% for k in 0..playlists|length-1 %}
                     <tr class="align-middle">

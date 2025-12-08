@@ -15,14 +15,14 @@ class AccueilController extends AbstractController
 {
     
     /**
-     * Permet d'accéder aux données des formations
+     * Repository permettant d'accéder aux données des formations
      * @var FormationRepository
      */
     private $repository;
     
     /**
-     * Constructeur
-     * @param FormationRepository $repository
+     * Constructeur du contrôleur
+     * @param FormationRepository $repository Repository des formations
      */
     public function __construct(FormationRepository $repository)
     {
@@ -30,8 +30,8 @@ class AccueilController extends AbstractController
     }
     
     /**
-     * Affichage de la page avec les deux dernières formations publiées
-     * @return Response Contient la page d'accueil
+     * Affiche la page d'accueil avec les deux dernières formations publiées
+     * @return Response Page d'accueil
      */
     #[Route('/', name: 'accueil')]
     public function index(): Response
@@ -44,7 +44,7 @@ class AccueilController extends AbstractController
     
     /**
      * Affiche la page des conditions générales d'utilisation
-     * @return Response Contient la page CGU
+     * @return Response Page des CGU
      */
     #[Route('/cgu', name: 'cgu')]
     public function cgu(): Response

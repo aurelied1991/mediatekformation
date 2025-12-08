@@ -8,7 +8,7 @@
         <div class="text-left">
             <img src="{{ app.request.getBasePath()~'/banniere.jpg' }}" alt = "Logo MediaTek86">
         </div>
-        {# Menu côté administrateur #}
+        {# Menu administrateur #}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -22,14 +22,15 @@
                 </ul>
             </div>
         </nav>
+        {# Messages flash #}
         {% for label, messages in app.flashes %}
-    {% for message in messages %}
-        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
-{% endfor %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}
 {% block body %}{% endblock %}

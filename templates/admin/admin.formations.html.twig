@@ -1,3 +1,4 @@
+{# Page d'administration pour gérer l'ensemble des formations #}
 {% extends "baseadmin.html.twig" %}
 
 {% block body %}
@@ -14,7 +15,7 @@
         <caption class="visually-hidden">Tableau des formations avec des boutons pour la modifier et la supprimer</caption>
         <thead>
             <tr>
-                {# Colonne 'Formations' avec tri et filtre #}
+                {# Colonne des Formations avec tri et filtre #}
                 <th class="text-left align-top w-30" scope="col">
                     Formations<br />
                     <a href="{{ path('admin.formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -28,7 +29,7 @@
                         </div>
                     </form>                    
                 </th>
-                {# Colonne 'Playlist' avec tri et filtre #}
+                {# Colonne des playlists avec tri et filtre #}
                 <th class="text-left align-top" scope="col">
                     Playlist<br />
                     <a href="{{ path('admin.formations.sort', {table:'playlist', champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -42,7 +43,7 @@
                         </div>
                     </form>                    
                 </th>
-                {# Colonne 'Catégories' avec filtre #}
+                {# Colonne des catégories avec filtre #}
                  <th class="text-left align-top" scope="col">
                     Catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('admin.formations.findallcontain', {champ:'id', table:'categories'}) }}">
@@ -59,20 +60,20 @@
                         </select>                    
                     </form>            
                 </th>
-                {# Colonne 'Date' avec tri #}
+                {# Colonne des dates avec tri #}
                 <th class="text-center align-top" scope="col">
                     Date<br />
                     <a href="{{ path('admin.formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('admin.formations.sort', {champ:'publishedAt', ordre:'DESC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true">></a>                    
                 </th>
-                {# Colonne pour les actions modifier et supprimer #}
+                {# Colonne des actions modifier et supprimer #}
                 <th class="text-center align-top" scope="col">
                     &nbsp;
                 </th>
             </tr>
         </thead>
         <tbody>
-            {# Boucle sur toutes les formations pour en afficher une (avec ses infos) dans chaque ligne du tableau #}
+            {# Affichage de chaque formation dans une ligne du tableau #}
             {% for formation in formations %}
                 <tr class="align-middle">
                     {# Titre de la formation #}
@@ -91,11 +92,11 @@
                             {{ categorie.name }}<br />
                         {% endfor %}
                     </td>
-                    {# Date de la publication de la formation #}
+                    {# Date de publication de la formation #}
                     <td class="text-center">
                         {{ formation.publishedatstring }}
                     </td>
-                    {# Miniature avec lien vers la page de formation #}
+                    {# Miniature cliquable vers la page de détails de la formation #}
                     <td class="text-center">
                         {% if formation.miniature %}
                             <a href="{{ path('admin.formations.showone', {id:formation.id}) }}">
@@ -103,11 +104,9 @@
                             </a>
                         {% endif %}
                     </td>
-                    {# Boutons pour supprimer et éditer une formation #}
+                    {# Boutons de suppression et d'édition d'une formation #}
                     <td>
-                        <!-- Bouton fait appel à méthode "edit" et envoit l'id de la formation et permet d'arriver sur page de modification -->
                         <a href="{{ path('admin.formation.edit', {id:formation.id}) }}" class="btn btn-secondary">Editer</a>
-                        <!-- Bouton fait appel à méthode "suppr" et envoit l'id de la formation -->
                         <a href="{{ path('admin.formation.delete', {id:formation.id}) }}" class="btn btn-danger mt-1" onclick="return confirm('Etes-vous sûr de vouloir supprimer {{formation.title}} ?');">Supprimer</a>
                     </td>
                 </tr>
