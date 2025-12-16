@@ -83,6 +83,14 @@ class FormationType extends AbstractType
                     new NotBlank(['message' => 'Le choix de la playlist est obligatoire'])
                 ]
             ])
+            //Champ correspondant à l'id de la vidéo youtube
+            ->add('videoid', TextType::class, [
+                'required' => true,
+                'label' => 'ID YouTube',
+                'constraints' => [
+                    new NotBlank(['message' => 'Le choix d\'une vidéo youtube est obligatoire'])
+                ]
+            ])
             //Ajout du bouton de soumission du formulaire
             ->add('submit', SubmitType::class, [
                 'label' => 'Enregistrer'

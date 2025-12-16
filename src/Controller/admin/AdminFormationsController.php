@@ -157,7 +157,7 @@ class AdminFormationsController extends AbstractController
     #[Route('/admin/formation/delete/{id}', name: 'admin.formation.delete')]
      public function suppr(int $id): Response
      {
-        //Permet de récupérer l'objet visite correspondant à id reçu en paramètre
+        //Permet de récupérer l'objet formation correspondant à id reçu en paramètre
         $formation = $this->formationRepository->find($id);
         //Permet d'appeler la méthode 'remove' du repository
         $this->formationRepository->remove($formation);

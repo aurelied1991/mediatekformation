@@ -20,7 +20,7 @@
                 {{ form_label(formFormation.title) }}
             </div>
             <div class="col-auto">
-                {{ form_widget(formFormation.title) }}
+                {{ form_widget(formFormation.title, {'attr': {'style': 'width: 400px;'}}) }}
             </div>
         </div>
         {# Ligne pour les champs playlist et catégories #}
@@ -36,6 +36,15 @@
             </div>
             <div class="col-auto">
                 {{ form_widget(formFormation.categories) }}
+            </div>
+        </div>
+        {# Champ pour l'id de la vidéo liée à la formation #}
+        <div class="row mb-3">
+            <div class="col-auto">
+                {{ form_label(formFormation.videoid) }}
+            </div>
+            <div class="col-auto">
+                {{ form_widget(formFormation.videoid) }}
             </div>
         </div>
         {# Champ pour la description de la formation #}

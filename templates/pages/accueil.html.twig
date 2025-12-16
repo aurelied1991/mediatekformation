@@ -19,13 +19,6 @@
         <table class="table">
             {# Caption invisible pour l'accessibilité (lecteurs d’écran) #}
             <caption class="visually-hidden">Tableau pour afficher les deux dernières formations ajoutées avec photo, date, nom, catégories, playlist</caption>
-            <thead class="visually-hidden">
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Détails</th>
-                </tr>
-            </thead>
-            <tbody>
                 <tr>
                     {# Boucle sur les formations à afficher #}
                     {% for formation in formations %}
@@ -56,7 +49,6 @@
                             </div>                    
                     {% endfor %}    
                 </tr>
-            </tbody>
         </table>        
     </p>
 {% endblock %}

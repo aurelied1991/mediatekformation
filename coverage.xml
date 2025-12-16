@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1765816362">
+  <project timestamp="1765816362">
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\AccueilController.php">
+      <class name="App\Controller\AccueilController" namespace="global">
+        <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="9" coveredelements="7"/>
+      </class>
+      <line num="27" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="36" type="method" name="index" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="41" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="49" type="method" name="cgu" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <metrics loc="55" ncloc="35" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="9" coveredelements="7"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\FormationsController.php">
+      <class name="App\Controller\FormationsController" namespace="global">
+        <metrics complexity="5" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="32" coveredelements="32"/>
+      </class>
+      <line num="39" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="41" type="stmt" count="11"/>
+      <line num="42" type="stmt" count="11"/>
+      <line num="49" type="method" name="index" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="52" type="stmt" count="2"/>
+      <line num="53" type="stmt" count="2"/>
+      <line num="54" type="stmt" count="2"/>
+      <line num="55" type="stmt" count="2"/>
+      <line num="56" type="stmt" count="2"/>
+      <line num="57" type="stmt" count="2"/>
+      <line num="67" type="method" name="sort" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="70" type="stmt" count="6"/>
+      <line num="71" type="stmt" count="6"/>
+      <line num="72" type="stmt" count="6"/>
+      <line num="73" type="stmt" count="6"/>
+      <line num="74" type="stmt" count="6"/>
+      <line num="75" type="stmt" count="6"/>
+      <line num="85" type="method" name="findAllContain" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="88" type="stmt" count="3"/>
+      <line num="89" type="stmt" count="3"/>
+      <line num="90" type="stmt" count="3"/>
+      <line num="91" type="stmt" count="3"/>
+      <line num="92" type="stmt" count="3"/>
+      <line num="93" type="stmt" count="3"/>
+      <line num="94" type="stmt" count="3"/>
+      <line num="95" type="stmt" count="3"/>
+      <line num="96" type="stmt" count="3"/>
+      <line num="104" type="method" name="showOne" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="108" type="stmt" count="1"/>
+      <line num="109" type="stmt" count="1"/>
+      <line num="110" type="stmt" count="1"/>
+      <metrics loc="113" ncloc="70" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="32" coveredelements="32"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\LoginController.php">
+      <class name="App\Controller\LoginController" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+      </class>
+      <line num="21" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="31" type="stmt" count="0"/>
+      <line num="38" type="method" name="logout" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <metrics loc="44" ncloc="30" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\PlaylistsController.php">
+      <class name="App\Controller\PlaylistsController" namespace="global">
+        <metrics complexity="7" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="35" elements="41" coveredelements="39"/>
+      </class>
+      <line num="48" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="53" type="stmt" count="8"/>
+      <line num="54" type="stmt" count="8"/>
+      <line num="55" type="stmt" count="8"/>
+      <line num="63" type="method" name="index" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="67" type="stmt" count="2"/>
+      <line num="69" type="stmt" count="2"/>
+      <line num="70" type="stmt" count="2"/>
+      <line num="71" type="stmt" count="2"/>
+      <line num="72" type="stmt" count="2"/>
+      <line num="73" type="stmt" count="2"/>
+      <line num="82" type="method" name="sort" visibility="public" complexity="3" crap="3.01" count="4"/>
+      <line num="85" type="stmt" count="4"/>
+      <line num="87" type="stmt" count="2"/>
+      <line num="88" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="93" type="stmt" count="0"/>
+      <line num="95" type="stmt" count="4"/>
+      <line num="96" type="stmt" count="4"/>
+      <line num="97" type="stmt" count="4"/>
+      <line num="98" type="stmt" count="4"/>
+      <line num="99" type="stmt" count="4"/>
+      <line num="109" type="method" name="findAllContain" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="112" type="stmt" count="2"/>
+      <line num="113" type="stmt" count="2"/>
+      <line num="114" type="stmt" count="2"/>
+      <line num="115" type="stmt" count="2"/>
+      <line num="116" type="stmt" count="2"/>
+      <line num="117" type="stmt" count="2"/>
+      <line num="118" type="stmt" count="2"/>
+      <line num="119" type="stmt" count="2"/>
+      <line num="120" type="stmt" count="2"/>
+      <line num="128" type="method" name="showOne" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="131" type="stmt" count="1"/>
+      <line num="132" type="stmt" count="1"/>
+      <line num="133" type="stmt" count="1"/>
+      <line num="134" type="stmt" count="1"/>
+      <line num="135" type="stmt" count="1"/>
+      <line num="136" type="stmt" count="1"/>
+      <line num="137" type="stmt" count="1"/>
+      <line num="138" type="stmt" count="1"/>
+      <metrics loc="141" ncloc="87" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="35" elements="41" coveredelements="39"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\admin\AdminCategoriesController.php">
+      <class name="App\Controller\admin\AdminCategoriesController" namespace="global">
+        <metrics complexity="7" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="17" elements="26" coveredelements="19"/>
+      </class>
+      <line num="43" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="45" type="stmt" count="2"/>
+      <line num="46" type="stmt" count="2"/>
+      <line num="54" type="method" name="index" visibility="public" complexity="4" crap="5.02" count="2"/>
+      <line num="57" type="stmt" count="2"/>
+      <line num="59" type="stmt" count="2"/>
+      <line num="60" type="stmt" count="2"/>
+      <line num="61" type="stmt" count="2"/>
+      <line num="62" type="stmt" count="0"/>
+      <line num="63" type="stmt" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="67" type="stmt" count="0"/>
+      <line num="68" type="stmt" count="0"/>
+      <line num="71" type="stmt" count="2"/>
+      <line num="72" type="stmt" count="2"/>
+      <line num="73" type="stmt" count="2"/>
+      <line num="74" type="stmt" count="2"/>
+      <line num="75" type="stmt" count="2"/>
+      <line num="83" type="method" name="suppr" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="86" type="stmt" count="2"/>
+      <line num="87" type="stmt" count="2"/>
+      <line num="88" type="stmt" count="1"/>
+      <line num="89" type="stmt" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="2"/>
+      <metrics loc="96" ncloc="65" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="17" elements="26" coveredelements="19"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\admin\AdminFormationsController.php">
+      <class name="App\Controller\admin\AdminFormationsController" namespace="global">
+        <metrics complexity="13" methods="9" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="39" elements="61" coveredelements="45"/>
+      </class>
+      <line num="44" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="46" type="stmt" count="24"/>
+      <line num="47" type="stmt" count="24"/>
+      <line num="54" type="method" name="index" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="57" type="stmt" count="24"/>
+      <line num="58" type="stmt" count="24"/>
+      <line num="59" type="stmt" count="24"/>
+      <line num="60" type="stmt" count="24"/>
+      <line num="61" type="stmt" count="24"/>
+      <line num="62" type="stmt" count="24"/>
+      <line num="72" type="method" name="sort" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="75" type="stmt" count="6"/>
+      <line num="76" type="stmt" count="6"/>
+      <line num="77" type="stmt" count="6"/>
+      <line num="78" type="stmt" count="6"/>
+      <line num="79" type="stmt" count="6"/>
+      <line num="80" type="stmt" count="6"/>
+      <line num="90" type="method" name="findAllContain" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="93" type="stmt" count="3"/>
+      <line num="94" type="stmt" count="3"/>
+      <line num="95" type="stmt" count="3"/>
+      <line num="96" type="stmt" count="3"/>
+      <line num="97" type="stmt" count="3"/>
+      <line num="98" type="stmt" count="3"/>
+      <line num="99" type="stmt" count="3"/>
+      <line num="100" type="stmt" count="3"/>
+      <line num="101" type="stmt" count="3"/>
+      <line num="109" type="method" name="ajout" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="113" type="stmt" count="0"/>
+      <line num="114" type="stmt" count="0"/>
+      <line num="115" type="stmt" count="0"/>
+      <line num="116" type="stmt" count="0"/>
+      <line num="117" type="stmt" count="0"/>
+      <line num="118" type="stmt" count="0"/>
+      <line num="120" type="stmt" count="0"/>
+      <line num="121" type="stmt" count="0"/>
+      <line num="122" type="stmt" count="0"/>
+      <line num="123" type="stmt" count="0"/>
+      <line num="132" type="method" name="edit" visibility="public" complexity="3" crap="3.07" count="1"/>
+      <line num="135" type="stmt" count="1"/>
+      <line num="137" type="stmt" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="140" type="stmt" count="1"/>
+      <line num="142" type="stmt" count="0"/>
+      <line num="144" type="stmt" count="0"/>
+      <line num="146" type="stmt" count="1"/>
+      <line num="147" type="stmt" count="1"/>
+      <line num="148" type="stmt" count="1"/>
+      <line num="149" type="stmt" count="1"/>
+      <line num="157" type="method" name="suppr" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="161" type="stmt" count="1"/>
+      <line num="163" type="stmt" count="1"/>
+      <line num="164" type="stmt" count="1"/>
+      <line num="166" type="stmt" count="1"/>
+      <line num="174" type="method" name="showOne" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="178" type="stmt" count="1"/>
+      <line num="180" type="stmt" count="1"/>
+      <line num="181" type="stmt" count="1"/>
+      <line num="182" type="stmt" count="1"/>
+      <line num="189" type="method" name="adminCgu" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="192" type="stmt" count="0"/>
+      <metrics loc="195" ncloc="121" classes="1" methods="9" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="39" elements="61" coveredelements="45"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Controller\admin\AdminPlaylistsController.php">
+      <class name="App\Controller\admin\AdminPlaylistsController" namespace="global">
+        <metrics complexity="15" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="52" elements="73" coveredelements="57"/>
+      </class>
+      <line num="51" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+      <line num="56" type="stmt" count="10"/>
+      <line num="57" type="stmt" count="10"/>
+      <line num="58" type="stmt" count="10"/>
+      <line num="65" type="method" name="index" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="68" type="stmt" count="4"/>
+      <line num="69" type="stmt" count="4"/>
+      <line num="70" type="stmt" count="4"/>
+      <line num="71" type="stmt" count="4"/>
+      <line num="72" type="stmt" count="4"/>
+      <line num="73" type="stmt" count="4"/>
+      <line num="82" type="method" name="sort" visibility="public" complexity="3" crap="3.01" count="4"/>
+      <line num="85" type="stmt" count="4"/>
+      <line num="87" type="stmt" count="2"/>
+      <line num="88" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="93" type="stmt" count="0"/>
+      <line num="96" type="stmt" count="4"/>
+      <line num="98" type="stmt" count="4"/>
+      <line num="99" type="stmt" count="4"/>
+      <line num="100" type="stmt" count="4"/>
+      <line num="101" type="stmt" count="4"/>
+      <line num="111" type="method" name="findAllContain" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="114" type="stmt" count="2"/>
+      <line num="115" type="stmt" count="2"/>
+      <line num="116" type="stmt" count="2"/>
+      <line num="117" type="stmt" count="2"/>
+      <line num="118" type="stmt" count="2"/>
+      <line num="119" type="stmt" count="2"/>
+      <line num="120" type="stmt" count="2"/>
+      <line num="121" type="stmt" count="2"/>
+      <line num="122" type="stmt" count="2"/>
+      <line num="130" type="method" name="showOne" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="133" type="stmt" count="1"/>
+      <line num="134" type="stmt" count="1"/>
+      <line num="135" type="stmt" count="1"/>
+      <line num="136" type="stmt" count="1"/>
+      <line num="137" type="stmt" count="1"/>
+      <line num="138" type="stmt" count="1"/>
+      <line num="139" type="stmt" count="1"/>
+      <line num="140" type="stmt" count="1"/>
+      <line num="148" type="method" name="ajout" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="152" type="stmt" count="0"/>
+      <line num="153" type="stmt" count="0"/>
+      <line num="154" type="stmt" count="0"/>
+      <line num="155" type="stmt" count="0"/>
+      <line num="156" type="stmt" count="0"/>
+      <line num="157" type="stmt" count="0"/>
+      <line num="159" type="stmt" count="0"/>
+      <line num="160" type="stmt" count="0"/>
+      <line num="161" type="stmt" count="0"/>
+      <line num="162" type="stmt" count="0"/>
+      <line num="171" type="method" name="edit" visibility="public" complexity="3" crap="3.04" count="1"/>
+      <line num="175" type="stmt" count="1"/>
+      <line num="177" type="stmt" count="1"/>
+      <line num="179" type="stmt" count="1"/>
+      <line num="181" type="stmt" count="1"/>
+      <line num="183" type="stmt" count="0"/>
+      <line num="185" type="stmt" count="0"/>
+      <line num="188" type="stmt" count="1"/>
+      <line num="190" type="stmt" count="1"/>
+      <line num="191" type="stmt" count="1"/>
+      <line num="192" type="stmt" count="1"/>
+      <line num="193" type="stmt" count="1"/>
+      <line num="194" type="stmt" count="1"/>
+      <line num="202" type="method" name="suppr" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="206" type="stmt" count="2"/>
+      <line num="208" type="stmt" count="2"/>
+      <line num="210" type="stmt" count="2"/>
+      <line num="212" type="stmt" count="1"/>
+      <line num="213" type="stmt" count="1"/>
+      <line num="216" type="stmt" count="1"/>
+      <line num="218" type="stmt" count="2"/>
+      <metrics loc="222" ncloc="140" classes="1" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="52" elements="73" coveredelements="57"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\DataFixtures\AppFixtures.php">
+      <class name="App\DataFixtures\AppFixtures" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+      </class>
+      <line num="10" type="method" name="load" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="12" type="stmt" count="0"/>
+      <metrics loc="15" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Entity\Categorie.php">
+      <class name="App\Entity\Categorie" namespace="global">
+        <metrics complexity="9" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="10" elements="20" coveredelements="16"/>
+      </class>
+      <line num="42" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="44" type="stmt" count="6"/>
+      <line num="51" type="method" name="getId" visibility="public" complexity="1" crap="1" count="43"/>
+      <line num="53" type="stmt" count="43"/>
+      <line num="60" type="method" name="getName" visibility="public" complexity="1" crap="1" count="46"/>
+      <line num="62" type="stmt" count="46"/>
+      <line num="70" type="method" name="setName" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="72" type="stmt" count="5"/>
+      <line num="73" type="stmt" count="5"/>
+      <line num="80" type="method" name="getFormations" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="82" type="stmt" count="2"/>
+      <line num="90" type="method" name="addFormation" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="92" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="1"/>
+      <line num="94" type="stmt" count="1"/>
+      <line num="97" type="stmt" count="1"/>
+      <line num="105" type="method" name="removeFormation" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="107" type="stmt" count="0"/>
+      <line num="108" type="stmt" count="0"/>
+      <line num="111" type="stmt" count="0"/>
+      <metrics loc="114" ncloc="69" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="10" elements="20" coveredelements="16"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Entity\Formation.php">
+      <class name="App\Entity\Formation" namespace="global">
+        <metrics complexity="20" methods="18" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="22" elements="46" coveredelements="37"/>
+      </class>
+      <line num="80" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="82" type="stmt" count="8"/>
+      <line num="89" type="method" name="getId" visibility="public" complexity="1" crap="1" count="37"/>
+      <line num="91" type="stmt" count="37"/>
+      <line num="98" type="method" name="getPublishedAt" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="100" type="stmt" count="3"/>
+      <line num="108" type="method" name="setPublishedAt" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="110" type="stmt" count="7"/>
+      <line num="112" type="stmt" count="7"/>
+      <line num="119" type="method" name="getPublishedAtString" visibility="public" complexity="2" crap="2" count="38"/>
+      <line num="121" type="stmt" count="38"/>
+      <line num="122" type="stmt" count="1"/>
+      <line num="124" type="stmt" count="37"/>
+      <line num="131" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="38"/>
+      <line num="133" type="stmt" count="38"/>
+      <line num="141" type="method" name="setTitle" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="143" type="stmt" count="6"/>
+      <line num="145" type="stmt" count="6"/>
+      <line num="152" type="method" name="getDescription" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="154" type="stmt" count="3"/>
+      <line num="162" type="method" name="setDescription" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="164" type="stmt" count="0"/>
+      <line num="166" type="stmt" count="0"/>
+      <line num="173" type="method" name="getVideoId" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="175" type="stmt" count="3"/>
+      <line num="183" type="method" name="setVideoId" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="185" type="stmt" count="0"/>
+      <line num="187" type="stmt" count="0"/>
+      <line num="194" type="method" name="getMiniature" visibility="public" complexity="1" crap="1" count="36"/>
+      <line num="196" type="stmt" count="36"/>
+      <line num="203" type="method" name="getPicture" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="205" type="stmt" count="1"/>
+      <line num="212" type="method" name="getPlaylist" visibility="public" complexity="1" crap="1" count="36"/>
+      <line num="214" type="stmt" count="36"/>
+      <line num="222" type="method" name="setPlaylist" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="224" type="stmt" count="6"/>
+      <line num="226" type="stmt" count="6"/>
+      <line num="233" type="method" name="getCategories" visibility="public" complexity="1" crap="1" count="44"/>
+      <line num="235" type="stmt" count="44"/>
+      <line num="243" type="method" name="addCategory" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="245" type="stmt" count="1"/>
+      <line num="246" type="stmt" count="1"/>
+      <line num="249" type="stmt" count="1"/>
+      <line num="257" type="method" name="removeCategory" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="259" type="stmt" count="0"/>
+      <line num="261" type="stmt" count="0"/>
+      <metrics loc="264" ncloc="152" classes="1" methods="18" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="22" elements="46" coveredelements="37"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Entity\Playlist.php">
+      <class name="App\Entity\Playlist" namespace="global">
+        <metrics complexity="16" methods="10" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="14" elements="33" coveredelements="21"/>
+      </class>
+      <line num="50" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
+      <line num="52" type="stmt" count="10"/>
+      <line num="59" type="method" name="getId" visibility="public" complexity="1" crap="1" count="19"/>
+      <line num="61" type="stmt" count="19"/>
+      <line num="68" type="method" name="getName" visibility="public" complexity="1" crap="1" count="45"/>
+      <line num="70" type="stmt" count="45"/>
+      <line num="78" type="method" name="setName" visibility="public" complexity="1" crap="1" count="10"/>
+      <line num="80" type="stmt" count="10"/>
+      <line num="82" type="stmt" count="10"/>
+      <line num="89" type="method" name="getDescription" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="91" type="stmt" count="3"/>
+      <line num="99" type="method" name="setDescription" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="101" type="stmt" count="0"/>
+      <line num="103" type="stmt" count="0"/>
+      <line num="110" type="method" name="getFormations" visibility="public" complexity="1" crap="1" count="19"/>
+      <line num="112" type="stmt" count="19"/>
+      <line num="120" type="method" name="addFormation" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="122" type="stmt" count="0"/>
+      <line num="123" type="stmt" count="0"/>
+      <line num="124" type="stmt" count="0"/>
+      <line num="127" type="stmt" count="0"/>
+      <line num="135" type="method" name="removeFormation" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="137" type="stmt" count="0"/>
+      <line num="139" type="stmt" count="0"/>
+      <line num="142" type="stmt" count="0"/>
+      <line num="149" type="method" name="getCategoriesPlaylist" visibility="public" complexity="4" crap="4" count="18"/>
+      <line num="151" type="stmt" count="18"/>
+      <line num="152" type="stmt" count="18"/>
+      <line num="153" type="stmt" count="18"/>
+      <line num="155" type="stmt" count="18"/>
+      <line num="156" type="stmt" count="18"/>
+      <line num="157" type="stmt" count="18"/>
+      <line num="161" type="stmt" count="18"/>
+      <metrics loc="164" ncloc="101" classes="1" methods="10" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="14" elements="33" coveredelements="21"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Entity\User.php">
+      <class name="App\Entity\User" namespace="global">
+        <metrics complexity="9" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="5" elements="23" coveredelements="8"/>
+      </class>
+      <line num="51" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="60" type="method" name="getUsername" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="62" type="stmt" count="0"/>
+      <line num="70" type="method" name="setUsername" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="74" type="stmt" count="0"/>
+      <line num="82" type="method" name="getUserIdentifier" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="84" type="stmt" count="24"/>
+      <line num="92" type="method" name="getRoles" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="94" type="stmt" count="24"/>
+      <line num="95" type="stmt" count="24"/>
+      <line num="97" type="stmt" count="24"/>
+      <line num="104" type="method" name="setRoles" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="106" type="stmt" count="0"/>
+      <line num="108" type="stmt" count="0"/>
+      <line num="115" type="method" name="getPassword" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="117" type="stmt" count="24"/>
+      <line num="125" type="method" name="setPassword" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="127" type="stmt" count="0"/>
+      <line num="129" type="stmt" count="0"/>
+      <line num="136" type="method" name="eraseCredentials" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="140" type="stmt" count="0"/>
+      <metrics loc="142" ncloc="81" classes="1" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="5" elements="23" coveredelements="8"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Form\CategorieType.php">
+      <class name="App\Form\CategorieType" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
+      </class>
+      <line num="27" type="method" name="buildForm" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="29" type="stmt" count="2"/>
+      <line num="30" type="stmt" count="2"/>
+      <line num="31" type="stmt" count="2"/>
+      <line num="32" type="stmt" count="2"/>
+      <line num="33" type="stmt" count="2"/>
+      <line num="34" type="stmt" count="2"/>
+      <line num="35" type="stmt" count="2"/>
+      <line num="36" type="stmt" count="2"/>
+      <line num="37" type="stmt" count="2"/>
+      <line num="38" type="stmt" count="2"/>
+      <line num="39" type="stmt" count="2"/>
+      <line num="40" type="stmt" count="2"/>
+      <line num="41" type="stmt" count="2"/>
+      <line num="49" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="51" type="stmt" count="2"/>
+      <line num="52" type="stmt" count="2"/>
+      <line num="53" type="stmt" count="2"/>
+      <metrics loc="57" ncloc="42" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Form\FormationType.php">
+      <class name="App\Form\FormationType" namespace="global">
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="65" elements="67" coveredelements="67"/>
+      </class>
+      <line num="33" type="method" name="buildForm" visibility="public" complexity="3" crap="3" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="41" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="1"/>
+      <line num="66" type="stmt" count="1"/>
+      <line num="67" type="stmt" count="1"/>
+      <line num="68" type="stmt" count="1"/>
+      <line num="69" type="stmt" count="1"/>
+      <line num="70" type="stmt" count="1"/>
+      <line num="71" type="stmt" count="1"/>
+      <line num="72" type="stmt" count="1"/>
+      <line num="73" type="stmt" count="1"/>
+      <line num="74" type="stmt" count="1"/>
+      <line num="75" type="stmt" count="1"/>
+      <line num="76" type="stmt" count="1"/>
+      <line num="77" type="stmt" count="1"/>
+      <line num="78" type="stmt" count="1"/>
+      <line num="79" type="stmt" count="1"/>
+      <line num="80" type="stmt" count="1"/>
+      <line num="81" type="stmt" count="1"/>
+      <line num="82" type="stmt" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="84" type="stmt" count="1"/>
+      <line num="85" type="stmt" count="1"/>
+      <line num="86" type="stmt" count="1"/>
+      <line num="87" type="stmt" count="1"/>
+      <line num="88" type="stmt" count="1"/>
+      <line num="89" type="stmt" count="1"/>
+      <line num="90" type="stmt" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="92" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="1"/>
+      <line num="94" type="stmt" count="1"/>
+      <line num="95" type="stmt" count="1"/>
+      <line num="96" type="stmt" count="1"/>
+      <line num="97" type="stmt" count="1"/>
+      <line num="105" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="107" type="stmt" count="1"/>
+      <line num="108" type="stmt" count="1"/>
+      <line num="109" type="stmt" count="1"/>
+      <metrics loc="112" ncloc="95" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="65" coveredstatements="65" elements="67" coveredelements="67"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Form\PlaylistType.php">
+      <class name="App\Form\PlaylistType" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="24" coveredelements="24"/>
+      </class>
+      <line num="28" type="method" name="buildForm" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <line num="33" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="1"/>
+      <line num="35" type="stmt" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="41" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="43" type="stmt" count="1"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="46" type="stmt" count="1"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="56" type="method" name="configureOptions" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <metrics loc="63" ncloc="47" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="22" elements="24" coveredelements="24"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Kernel.php">
+      <class name="App\Kernel" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Repository\CategorieRepository.php">
+      <class name="App\Repository\CategorieRepository" namespace="global">
+        <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="30" coveredelements="30"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="48"/>
+      <line num="21" type="stmt" count="48"/>
+      <line num="29" type="method" name="add" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="31" type="stmt" count="4"/>
+      <line num="32" type="stmt" count="4"/>
+      <line num="40" type="method" name="remove" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="51" type="method" name="findAllForOnePlaylist" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="53" type="stmt" count="3"/>
+      <line num="54" type="stmt" count="3"/>
+      <line num="55" type="stmt" count="3"/>
+      <line num="56" type="stmt" count="3"/>
+      <line num="57" type="stmt" count="3"/>
+      <line num="58" type="stmt" count="3"/>
+      <line num="59" type="stmt" count="3"/>
+      <line num="60" type="stmt" count="3"/>
+      <line num="67" type="method" name="findAllSorted" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="69" type="stmt" count="3"/>
+      <line num="70" type="stmt" count="3"/>
+      <line num="71" type="stmt" count="3"/>
+      <line num="72" type="stmt" count="3"/>
+      <line num="80" type="method" name="findOneByName" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="82" type="stmt" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="84" type="stmt" count="1"/>
+      <line num="85" type="stmt" count="1"/>
+      <line num="86" type="stmt" count="1"/>
+      <line num="87" type="stmt" count="1"/>
+      <line num="88" type="stmt" count="1"/>
+      <metrics loc="91" ncloc="59" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="30" coveredelements="30"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Repository\FormationRepository.php">
+      <class name="App\Repository\FormationRepository" namespace="global">
+        <metrics complexity="10" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="50" coveredelements="50"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="50"/>
+      <line num="21" type="stmt" count="50"/>
+      <line num="29" type="method" name="add" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="31" type="stmt" count="3"/>
+      <line num="32" type="stmt" count="3"/>
+      <line num="40" type="method" name="remove" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="53" type="method" name="findAllOrderBy" visibility="public" complexity="2" crap="2" count="13"/>
+      <line num="55" type="stmt" count="13"/>
+      <line num="56" type="stmt" count="9"/>
+      <line num="57" type="stmt" count="9"/>
+      <line num="58" type="stmt" count="9"/>
+      <line num="59" type="stmt" count="9"/>
+      <line num="61" type="stmt" count="4"/>
+      <line num="62" type="stmt" count="4"/>
+      <line num="63" type="stmt" count="4"/>
+      <line num="64" type="stmt" count="4"/>
+      <line num="65" type="stmt" count="4"/>
+      <line num="77" type="method" name="findByContainValue" visibility="public" complexity="3" crap="3" count="7"/>
+      <line num="79" type="stmt" count="7"/>
+      <line num="80" type="stmt" count="4"/>
+      <line num="82" type="stmt" count="7"/>
+      <line num="83" type="stmt" count="5"/>
+      <line num="84" type="stmt" count="5"/>
+      <line num="85" type="stmt" count="5"/>
+      <line num="86" type="stmt" count="5"/>
+      <line num="87" type="stmt" count="5"/>
+      <line num="88" type="stmt" count="5"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="91" type="stmt" count="2"/>
+      <line num="92" type="stmt" count="2"/>
+      <line num="93" type="stmt" count="2"/>
+      <line num="94" type="stmt" count="2"/>
+      <line num="95" type="stmt" count="2"/>
+      <line num="96" type="stmt" count="2"/>
+      <line num="105" type="method" name="findAllLasted" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="107" type="stmt" count="2"/>
+      <line num="108" type="stmt" count="2"/>
+      <line num="109" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="2"/>
+      <line num="111" type="stmt" count="2"/>
+      <line num="119" type="method" name="findAllForOnePlaylist" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="121" type="stmt" count="6"/>
+      <line num="122" type="stmt" count="6"/>
+      <line num="123" type="stmt" count="6"/>
+      <line num="124" type="stmt" count="6"/>
+      <line num="125" type="stmt" count="6"/>
+      <line num="126" type="stmt" count="6"/>
+      <line num="127" type="stmt" count="6"/>
+      <metrics loc="130" ncloc="87" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="50" coveredelements="50"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Repository\PlaylistRepository.php">
+      <class name="App\Repository\PlaylistRepository" namespace="global">
+        <metrics complexity="8" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="49" coveredelements="49"/>
+      </class>
+      <line num="19" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="21" type="stmt" count="24"/>
+      <line num="29" type="method" name="add" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="31" type="stmt" count="3"/>
+      <line num="32" type="stmt" count="3"/>
+      <line num="40" type="method" name="remove" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="51" type="method" name="findAllOrderByName" visibility="public" complexity="1" crap="1" count="13"/>
+      <line num="53" type="stmt" count="13"/>
+      <line num="54" type="stmt" count="13"/>
+      <line num="55" type="stmt" count="13"/>
+      <line num="56" type="stmt" count="13"/>
+      <line num="57" type="stmt" count="13"/>
+      <line num="58" type="stmt" count="13"/>
+      <line num="69" type="method" name="findByContainValue" visibility="public" complexity="3" crap="3" count="5"/>
+      <line num="71" type="stmt" count="5"/>
+      <line num="72" type="stmt" count="2"/>
+      <line num="74" type="stmt" count="5"/>
+      <line num="75" type="stmt" count="3"/>
+      <line num="76" type="stmt" count="3"/>
+      <line num="77" type="stmt" count="3"/>
+      <line num="78" type="stmt" count="3"/>
+      <line num="79" type="stmt" count="3"/>
+      <line num="80" type="stmt" count="3"/>
+      <line num="81" type="stmt" count="3"/>
+      <line num="82" type="stmt" count="3"/>
+      <line num="84" type="stmt" count="2"/>
+      <line num="85" type="stmt" count="2"/>
+      <line num="86" type="stmt" count="2"/>
+      <line num="87" type="stmt" count="2"/>
+      <line num="88" type="stmt" count="2"/>
+      <line num="89" type="stmt" count="2"/>
+      <line num="90" type="stmt" count="2"/>
+      <line num="91" type="stmt" count="2"/>
+      <line num="92" type="stmt" count="2"/>
+      <line num="101" type="method" name="findAllOrderByNbFormations" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="104" type="stmt" count="5"/>
+      <line num="105" type="stmt" count="5"/>
+      <line num="106" type="stmt" count="5"/>
+      <line num="107" type="stmt" count="5"/>
+      <line num="108" type="stmt" count="5"/>
+      <line num="109" type="stmt" count="5"/>
+      <line num="110" type="stmt" count="5"/>
+      <line num="111" type="stmt" count="5"/>
+      <line num="112" type="stmt" count="5"/>
+      <line num="113" type="stmt" count="5"/>
+      <line num="114" type="stmt" count="5"/>
+      <line num="115" type="stmt" count="5"/>
+      <metrics loc="118" ncloc="81" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="49" coveredelements="49"/>
+    </file>
+    <file name="C:\wamp64\www\mediatekformation\src\Repository\UserRepository.php">
+      <class name="App\Repository\UserRepository" namespace="global">
+        <metrics complexity="3" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="1" elements="8" coveredelements="2"/>
+      </class>
+      <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="24"/>
+      <line num="24" type="stmt" count="24"/>
+      <line num="34" type="method" name="upgradePassword" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="40" type="stmt" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <metrics loc="45" ncloc="30" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="1" elements="8" coveredelements="2"/>
+    </file>
+    <metrics files="20" loc="2193" ncloc="1419" classes="19" methods="107" coveredmethods="81" conditionals="0" coveredconditionals="0" statements="514" coveredstatements="440" elements="621" coveredelements="521"/>
+  </project>
+</coverage>
