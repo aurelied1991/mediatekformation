@@ -43,16 +43,16 @@ class PlaylistsController extends AbstractController
      * Constructeur du contrôleur
      * @param PlaylistRepository $playlistRepository
      * @param CategorieRepository $categorieRepository
-     * @param FormationRepository $formationRespository
+     * @param FormationRepository $formationRepository
      */
     public function __construct(
         PlaylistRepository $playlistRepository,
         CategorieRepository $categorieRepository,
-        FormationRepository $formationRespository
+        FormationRepository $formationRepository
     ) {
         $this->playlistRepository = $playlistRepository;
         $this->categorieRepository = $categorieRepository;
-        $this->formationRepository = $formationRespository;
+        $this->formationRepository = $formationRepository;
     }
     
     /**

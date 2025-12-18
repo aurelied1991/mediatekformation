@@ -54,7 +54,7 @@ class FormationRepositoryTest extends KernelTestCase
         $formation = $this->getFormation();
         $nbFormations = $repository->count([]);
         $repository->add($formation);
-        $this->assertEquals($nbFormations + 1, $repository->count([]), "Erreur lors de l'ajout");
+        $this->assertEquals($nbFormations + 1, $repository->count([]), "La formation n’a pas été ajoutée");
     }
     
     /**
@@ -68,7 +68,7 @@ class FormationRepositoryTest extends KernelTestCase
         $repository->add($formation);
         $nbFormations = $repository->count([]);
         $repository->remove($formation);
-        $this->assertEquals($nbFormations - 1, $repository->count([]), "Erreur lors de la suppression");
+        $this->assertEquals($nbFormations - 1, $repository->count([]), "La formation n’a pas été supprimée");
     }
     
     /**
@@ -82,11 +82,16 @@ class FormationRepositoryTest extends KernelTestCase
         $formationsAsc = $repository->findAllOrderBy("title", "ASC");
         $this->assertEquals(
             "Android Studio (complément n°1) : Navigation Drawer et Fragment",
-            $formationsAsc[0]->getTitle()
+            $formationsAsc[0]->getTitle(),
+            "La première formation triée par ordre ASC n'est pas celle attendue"
         );
         // Tri par ordre descendant
         $formationsDesc = $repository->findAllOrderBy("title", "DESC");
-        $this->assertEquals("UML : Diagramme de paquetages", $formationsDesc[0]->getTitle());
+        $this->assertEquals(
+            "UML : Diagramme de paquetages",
+            $formationsDesc[0]->getTitle(),
+            "La première formation triée par ordre DESC n'est pas celle attendue"
+        );
     }
     
     /**
@@ -101,7 +106,7 @@ class FormationRepositoryTest extends KernelTestCase
         $repository->add($formation, true);
         $formations = $repository->findByContainValue("title", "tester");
         $nbFormations = count($formations);
-        $this->assertEquals(1, $nbFormations);
+        $this->assertEquals(1, $nbFormations, "La recherche n'a pas retourné le nombre attendu de formations");
     }
     
     /**

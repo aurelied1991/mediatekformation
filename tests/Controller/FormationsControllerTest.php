@@ -23,7 +23,7 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/formations');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page des formations n'est pas accessible");
     }
     
     /**
@@ -34,9 +34,16 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/tri/title/asc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par titre des formations a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals('Android Studio (complément n°1) : Navigation Drawer et Fragment', $first);
+        $this->assertEquals(
+            'Android Studio (complément n°1) : Navigation Drawer et Fragment',
+            $first,
+            "Le premier résultat du tri ASC par titre des formations est incorrect"
+        );
     }
     
     /**
@@ -47,9 +54,16 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/tri/title/desc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri DESC par titre des formations a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals('UML : Diagramme de paquetages', $first);
+        $this->assertEquals(
+            'UML : Diagramme de paquetages',
+            $first,
+            "Le premier résultat du tri DESC par titre des formations est incorrect"
+        );
     }
     
     /**
@@ -60,9 +74,16 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/tri/name/asc/playlist');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par nom de playlist a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals('Bases de la programmation n°74 - POO : collections', $first);
+        $this->assertEquals(
+            'Bases de la programmation n°74 - POO : collections',
+            $first,
+            "Le premier résultat du tri ASC par playlist est incorrect"
+        );
     }
 
     /**
@@ -73,9 +94,16 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/tri/name/desc/playlist');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri DESC par nom de playlist a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals(self::TITRE1_FORMATION, $first);
+        $this->assertEquals(
+            self::TITRE1_FORMATION,
+            $first,
+            "Le premier résultat du tri DESC par playlist est incorrect"
+        );
     }
 
     /**
@@ -86,13 +114,28 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/formations/recherche/title');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "La page de recherche par titre est inaccessible"
+        );
         $crawler = $client->submitForm('Filtrer', ['recherche' => 'C#'
         ]);
-        $this->assertCount(11, $crawler->filter('h5'));
-        $this->assertSelectorTextContains('h5', 'C#');
+        $this->assertCount(
+            11,
+            $crawler->filter('h5'),
+            "Le nombre de formations retourné par la recherche est incorrect"
+        );
+        $this->assertSelectorTextContains(
+            'h5',
+            'C#',
+            "Aucune formation contenant 'C#' n'a été trouvée"
+        );
         $first = $crawler->filter('.text-info')->first()->text();
-        $this->assertEquals(self::TITRE1_FORMATION, $first);
+        $this->assertEquals(
+            self::TITRE1_FORMATION,
+            $first,
+            "Le premier résultat de la recherche par titre est incorrect"
+        );
     }
     
     /**
@@ -103,13 +146,25 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/formations/recherche/name/playlist');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page de recherche par playlist est inaccessible");
         $crawler = $client->submitForm('Filtrer', ['recherche' => 'Cours Curseurs'
         ]);
-        $this->assertCount(2, $crawler->filter('h5'));
-        $this->assertSelectorTextContains('h5', 'Cours Curseurs');
+        $this->assertCount(
+            2,
+            $crawler->filter('h5'),
+            "Le nombre de formations retourné par la recherche sur playlist est incorrect"
+        );
+        $this->assertSelectorTextContains(
+            'h5',
+            'Cours Curseurs',
+            "Aucune formation correspondant à la playlist 'Cours Curseurs' n'a été trouvée"
+        );
         $first = $crawler->filter('.text-info')->first()->text();
-        $this->assertEquals('Cours Curseurs(5 à 8 / 8) : curseur historique et curseur dans le SGBDR', $first);
+        $this->assertEquals(
+            'Cours Curseurs(5 à 8 / 8) : curseur historique et curseur dans le SGBDR',
+            $first,
+            "Le premier résultat de la recherche par playlist est incorrect"
+        );
     }
     
     /**
@@ -120,11 +175,19 @@ class FormationsControllerTest extends WebTestCase
      {
         $client = static::createClient();
         $crawler = $client->request('POST', '/formations/recherche/id/categories', ['recherche' => 3]);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page de filtrage par catégorie est inaccessible");
         $nombreResultats = $crawler->filter('tbody tr')->count();
-        $this->assertEquals(85, $nombreResultats);
+        $this->assertEquals(
+            85,
+            $nombreResultats,
+            "Le nombre de formations retourné par le filtrage par catégorie est incorrect"
+        );
         $firstTitle = $crawler->filter('td:nth-child(1)')->first()->text();
-        $this->assertEquals(self::TITRE1_FORMATION, $firstTitle);
+        $this->assertEquals(
+            self::TITRE1_FORMATION,
+            $firstTitle,
+            "Le premier résultat du filtrage par catégorie est incorrect"
+        );
      }
      
      /**
@@ -135,9 +198,12 @@ class FormationsControllerTest extends WebTestCase
      {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/tri/publishedAt/asc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par date de publication a échoué (page inaccessible)"
+        );
         $firstDate = $crawler->filter('td.text-center')->first()->text();
-        $this->assertEquals('25/09/2016', $firstDate);
+        $this->assertEquals('25/09/2016', $firstDate, "Le premier résultat du tri ASC par date est incorrect");
      }
      
      /**
@@ -148,9 +214,12 @@ class FormationsControllerTest extends WebTestCase
      {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/tri/publishedAt/desc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri DESC par date de publication a échoué (page inaccessible)"
+        );
         $firstDate = $crawler->filter('td.text-center')->first()->text();
-        $this->assertEquals('28/10/2025', $firstDate);
+        $this->assertEquals('28/10/2025', $firstDate, "Le premier résultat du tri DESC par date est incorrect");
      }
     
      /**
@@ -161,14 +230,26 @@ class FormationsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page des formations n'est pas accessible");
         $link = $crawler->filter('a[href^="/formations/formation"]')->first()->link();
         $crawler = $client->click($link);
         $response = $client->getResponse();
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals(
+            Response::HTTP_OK,
+            $response->getStatusCode(),
+            "La page de détails de la formation n'est pas accessible"
+        );
         $uri = $client->getRequest()->server->get("REQUEST_URI");
-        $this->assertEquals('/formations/formation/1', $uri);
+        $this->assertEquals(
+            '/formations/formation/1',
+            $uri,
+            "L'URL de la page des détails de la formation est incorrecte"
+        );
         $titre = $crawler->filter('h4.text-info')->text();
-        $this->assertEquals('Eclipse n°8 : Déploiement', $titre);
+        $this->assertEquals(
+            'Eclipse n°8 : Déploiement',
+            $titre,
+            "Le titre de la page des détails de la formation est incorrect"
+        );
     }
 }

@@ -36,16 +36,16 @@ class FormationsValidationsTest extends KernelTestCase
     {
         $dateToday = new \DateTime();
         $this->assertErrors(
-                $this->getFormation()->setPublishedAt($dateToday),
-                0,
-                "La date d'aujourd'hui devrait être acceptée"
-                );
+            $this->getFormation()->setPublishedAt($dateToday),
+            0,
+            "La date d'aujourd'hui devrait être acceptée"
+        );
         $dateAnterieure = (new \DateTime())->sub(new \DateInterval("P3D"));
         $this->assertErrors(
-                $this->getFormation()->setPublishedAt($dateAnterieure),
-                0,
-                "La date antérieure devrait être acceptée"
-                );
+            $this->getFormation()->setPublishedAt($dateAnterieure),
+            0,
+            "La date antérieure devrait être acceptée"
+        );
     }
     
     /**
@@ -56,9 +56,9 @@ class FormationsValidationsTest extends KernelTestCase
         $datePosterieure = (new \DateTime())->add(new \DateInterval("P5D"));
         $this->assertErrors(
             $this->getFormation()->setPublishedAt($datePosterieure),
-                1,
-                "La date postérieure devrait échouer"
-                );
+            1,
+            "La date postérieure devrait échouer"
+        );
     }
     
     /**

@@ -104,7 +104,7 @@ class Playlist
     }
 
     /**
-     * Retourne une collection de formations apppartenant à la playlist
+     * Retourne une collection de formations appartenant à la playlist
      * @return Collection<int, Formation>
      */
     public function getFormations(): Collection

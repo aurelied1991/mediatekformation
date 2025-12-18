@@ -25,7 +25,7 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/playlists');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page des playlists n'est pas accessible");
     }
     
     /**
@@ -36,9 +36,16 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/playlists/tri/name/asc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par nom des playlists a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $first);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $first,
+            "Le premier résultat du tri ASC par nom des playlists est incorrect"
+        );
     }
     
     /**
@@ -49,9 +56,16 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/playlists/tri/name/desc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri DESC par nom des playlists a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals('Visual Studio 2019 et C#', $first);
+        $this->assertEquals(
+            'Visual Studio 2019 et C#',
+            $first,
+            "Le premier résultat du tri DESC par nom des playlists est incorrect"
+        );
     }
     
     /**
@@ -62,11 +76,22 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/playlists/tri/nbFormations/asc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri par ordre ASC par nombre de formations a échoué (page inaccessible)"
+        );
         $firstNumber = intval($crawler->filter('td:nth-child(2)')->first()->text());
-        $this->assertEquals(0, $firstNumber);
+        $this->assertEquals(
+            0,
+            $firstNumber,
+            "Le nombre de formations pour la première playlist triée par ordre ASC est incorrect"
+        );
         $firstPlaylist = $crawler->filter(self::CSS_PREMIERE_COLONNE)->first()->text();
-        $this->assertEquals('playlist test', $firstPlaylist);
+        $this->assertEquals(
+            'playlist test',
+            $firstPlaylist,
+            "Le nom de la première playlist triée par ordre ASC est incorrect"
+        );
     }
     
     /**
@@ -77,11 +102,22 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/playlists/tri/nbFormations/desc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri par ordre DESC par nombre de formations a échoué (page inaccessible)"
+        );
         $firstNumber = intval($crawler->filter('td:nth-child(2)')->first()->text());
-        $this->assertEquals(74, $firstNumber);
+        $this->assertEquals(
+            74,
+            $firstNumber,
+            "Le nombre de formations pour la première playlist triée par ordre DESC est incorrect"
+        );
         $firstPlaylist = $crawler->filter(self::CSS_PREMIERE_COLONNE)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $firstPlaylist);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $firstPlaylist,
+            "Le nom de la première playlist triée par ordre DESC est incorrect"
+        );
     }
     
     /**
@@ -92,13 +128,13 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $client->request('GET', '/playlists/recherche/name');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page de recherche par nom est inaccessible");
         $crawler = $client->submitForm('Filtrer', ['recherche' => 'C#'
         ]);
-        $this->assertCount(2, $crawler->filter('h5'));
-        $this->assertSelectorTextContains('h5', 'C#');
+        $this->assertCount(2, $crawler->filter('h5'), "Le nombre de playlists retourné par la recherche est incorrect");
+        $this->assertSelectorTextContains('h5', 'C#', "Aucune playlist contenant 'C#' n'a été trouvée");
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $first);
+        $this->assertEquals(self::TITRE1_PLAYLIST, $first, "Le premier résultat de la recherche par nom est incorrect");
     }
     
     /**
@@ -109,12 +145,20 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('POST', '/playlists/recherche/id/categories', ['recherche' => 3]);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page de filtrage par catégorie est inaccessible");
         $nombreResultats = $crawler->filter('tbody tr')->count();
         $expectedCount = 2;
-        $this->assertEquals($expectedCount, $nombreResultats);
+        $this->assertEquals(
+            $expectedCount,
+            $nombreResultats,
+            "Le nombre de playlists retourné par le filtrage par catégorie est incorrect"
+        );
         $firstPlaylistName = $crawler->filter(self::CSS_PREMIERE_COLONNE)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $firstPlaylistName);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $firstPlaylistName,
+            "Le nom de la première playlist filtrée par catégorie est incorrect"
+        );
     }
     
     /**
@@ -125,13 +169,24 @@ class PlaylistsControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/playlists');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page des playlists n'est pas accessible");
         $link = $crawler->filter('a[href^="/playlists/playlist"]')->first()->link();
         $crawler = $client->click($link);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "La page de détails de la playlist n'est pas accessible"
+        );
         $uri = $client->getRequest()->server->get("REQUEST_URI");
-        $this->assertEquals('/playlists/playlist/13', $uri);
+        $this->assertEquals(
+            '/playlists/playlist/13',
+            $uri,
+            "L'URL de la page des détails de la playlist est incorrecte"
+        );
         $titre = $crawler->filter('h4.text-info')->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $titre);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $titre,
+            "Le titre de la page des détails de la playlist est incorrect"
+        );
     }
 }

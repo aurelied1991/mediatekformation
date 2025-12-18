@@ -75,7 +75,7 @@ class Categorie
 
     /**
      * Retourne la collection des formations associées à une catégorie
-     * @return Collection<int, Formation> La  collection de formation
+     * @return Collection<int, Formation> La collection de formations
      */
     public function getFormations(): Collection
     {

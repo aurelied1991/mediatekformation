@@ -218,4 +218,3 @@ class AdminPlaylistsController extends AbstractController
         return $this->redirectToRoute('admin.playlists');
     }
 }
-

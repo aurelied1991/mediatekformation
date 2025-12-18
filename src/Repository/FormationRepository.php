@@ -45,7 +45,7 @@ class FormationRepository extends ServiceEntityRepository
 
     /**
      * Retourne toutes les formations triées sur un champ donné
-     * @param type $champ Champ sur lequel trié
+     * @param type $champ Champ sur lequel trier
      * @param type $ordre Ordre du tri (ASC ou DESC)
      * @param type $table Nom de la table si $champ est dans une autre table
      * @return Formation[]

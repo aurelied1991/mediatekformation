@@ -46,7 +46,7 @@ class CategorieRepositoryTest extends KernelTestCase
         $categorie = $this->getCategorie();
         $nbCategories = $repository->count([]);
         $repository->add($categorie);
-        $this->assertEquals($nbCategories + 1, $repository->count([]), "Erreur lors de l'ajout");
+        $this->assertEquals($nbCategories + 1, $repository->count([]), "La catégorie n’a pas été ajoutée");
     }
     
     /**
@@ -59,7 +59,7 @@ class CategorieRepositoryTest extends KernelTestCase
         $repository->add($categorie);
         $nbCategories = $repository->count([]);
         $repository->remove($categorie);
-        $this->assertEquals($nbCategories - 1, $repository->count([]), "Erreur lors de la suppression");
+        $this->assertEquals($nbCategories - 1, $repository->count([]), "La catégorie n’a pas été supprimée");
     }
     
     /**
@@ -68,22 +68,22 @@ class CategorieRepositoryTest extends KernelTestCase
     public function testFindAllForOnePlaylist()
     {
         $repository = $this->recupRepository();
+        $entityManager = self::getContainer()->get('doctrine')->getManager();
         $playlist = new Playlist();
         $playlist->setName("Test Playlist");
+        $entityManager->persist($playlist);
         $categorie1 = $this->getCategorie();
-        $repository->add($categorie1);
         $categorie2 = (new Categorie())->setName("Symfony intermédiaire");
-        $repository->add($categorie2);
+        $entityManager->persist($categorie1);
+        $entityManager->persist($categorie2);
         $formation = new Formation();
         $formation->setTitle("Formations Symfony")->setPlaylist($playlist);
         $categorie1->addFormation($formation);
         $categorie2->addFormation($formation);
-        $entityManager = self::getContainer()->get('doctrine')->getManager();
-        $entityManager->persist($playlist);
         $entityManager->persist($formation);
         $entityManager->flush();
         $categories = $repository->findAllForOnePlaylist($playlist->getId());
-        $this->assertCount(2, $categories, "Il devrait y avoir 2 catégories");
+        $this->assertCount(2, $categories, "Il devrait y avoir 2 catégories associées à la playlist");
     }
     
     /**
@@ -93,7 +93,11 @@ class CategorieRepositoryTest extends KernelTestCase
     {
         $repository = $this->recupRepository();
         $categorieTriNomAsc = $repository->findAllSorted();
-        $this->assertEquals("Android", $categorieTriNomAsc[0]->getName());
+        $this->assertEquals(
+            "Android",
+            $categorieTriNomAsc[0]->getName(),
+            "Les catégories ne sont pas triées par nom (ordre ASC)"
+        );
     }
     
     /**
@@ -106,6 +110,10 @@ class CategorieRepositoryTest extends KernelTestCase
         $repository->add($categorie);
         $categorieRecherchee = $repository->findOneByName("Symfony");
         $this->assertNotNull($categorieRecherchee, "La catégorie n'a pas été trouvée");
-        $this->assertEquals("Symfony", $categorieRecherchee->getName());
+        $this->assertEquals(
+            "Symfony",
+            $categorieRecherchee->getName(),
+            "Le nom de la catégorie trouvée ne correspond pas"
+        );
     }
 }

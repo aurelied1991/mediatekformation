@@ -107,7 +107,7 @@ class PlaylistRepository extends ServiceEntityRepository
                 ->leftJoin('p.formations', 'f')
                 //regrouper par ID de playlist et nécessaire pour orderBy
                 ->groupBy('p.id')
-                //tri les playlists en fonction du nombre de formations et selon choxi dans $tri (ASC ou DESC)
+                //tri les playlists en fonction du nombre de formations et selon choix dans $tri (ASC ou DESC)
                 ->orderBy('COUNT(f.id)', $ordre)
                 //transforme le QueryBuilder en  Query exécutable
                 ->getQuery()

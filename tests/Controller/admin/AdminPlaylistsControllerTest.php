@@ -33,8 +33,8 @@ class AdminPlaylistsControllerTest extends WebTestCase
             ->findOneBy(['username' => 'admin']);
         $client->loginUser($user);
         $client->request('GET', '/admin');
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h3', 'Gestion des formations');
+        $this->assertResponseIsSuccessful("La page admin n'est pas accessible après login");
+        $this->assertSelectorTextContains('h3', 'Gestion des formations', "Le titre de la page admin est incorrect");
         return $client;
     }
     
@@ -46,9 +46,16 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', 'admin/playlists/tri/name/asc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par nombre de formations a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $first);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $first,
+            "Le nom de la première playlist triée par ordre ASC est incorrect"
+        );
     }
     
     /**
@@ -59,9 +66,16 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', 'admin/playlists/tri/name/desc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par nom des playlists a échoué (page inaccessible)"
+        );
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals('Visual Studio 2019 et C#', $first);
+        $this->assertEquals(
+            'Visual Studio 2019 et C#',
+            $first,
+            "Le nom de la première playlist triée par ordre DESC est incorrect"
+        );
     }
     
     /**
@@ -72,13 +86,13 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $client->request('GET', 'admin/playlists/recherche/name');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page de recherche par nom est inaccessible");
         $crawler = $client->submitForm('Filtrer', ['recherche' => 'C#'
         ]);
-        $this->assertCount(2, $crawler->filter('h5'));
-        $this->assertSelectorTextContains('h5', 'C#');
+        $this->assertCount(2, $crawler->filter('h5'), "Le nombre de playlists retourné par la recherche est incorrect");
+        $this->assertSelectorTextContains('h5', 'C#', "Aucune playlist contenant 'C#' n'a été trouvée");
         $first = $crawler->filter(self::CSS_TEXT_INFO)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $first);
+        $this->assertEquals(self::TITRE1_PLAYLIST, $first, "Le premier résultat de la recherche par nom est incorrect");
     }
     
     /**
@@ -89,11 +103,22 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', 'admin/playlists/tri/nbFormations/asc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri ASC par nombre de formations a échoué (page inaccessible)"
+        );
         $firstNumber = intval($crawler->filter('td:nth-child(2)')->first()->text());
-        $this->assertEquals(0, $firstNumber);
+        $this->assertEquals(
+            0,
+            $firstNumber,
+            "Le nombre de formations pour la première playlist triée par ordre ASC est incorrect"
+        );
         $firstPlaylist = $crawler->filter(self::CSS_PREMIERE_COLONNE)->first()->text();
-        $this->assertEquals('playlist test', $firstPlaylist);
+        $this->assertEquals(
+            'playlist test',
+            $firstPlaylist,
+            "Le nom de la première playlist triée par ordre ASC est incorrect"
+        );
     }
     
     /**
@@ -104,11 +129,22 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', 'admin/playlists/tri/nbFormations/desc');
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "Le tri DESC par nombre de formations a échoué (page inaccessible)"
+        );
         $firstNumber = intval($crawler->filter('td:nth-child(2)')->first()->text());
-        $this->assertEquals(74, $firstNumber);
+        $this->assertEquals(
+            74,
+            $firstNumber,
+            "Le nombre de formations pour la première playlist triée par ordre DESC est incorrect"
+        );
         $firstPlaylist = $crawler->filter(self::CSS_PREMIERE_COLONNE)->first()->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $firstPlaylist);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $firstPlaylist,
+            "Le nom de la première playlist triée par ordre DESC est incorrect"
+        );
     }
     
     /**
@@ -119,12 +155,20 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('POST', 'admin/playlists/recherche/id/categories', ['recherche' => 3]);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page de filtrage par catégorie est inaccessible");
         $nombreResultats = $crawler->filter('tbody tr')->count();
         $expectedCount = 2;
-        $this->assertEquals($expectedCount, $nombreResultats);
+        $this->assertEquals(
+            $expectedCount,
+            $nombreResultats,
+            "Le nombre de playlists retourné par le filtrage par catégorie est incorrect"
+        );
         $firstPlaylistName = $crawler->filter(self::CSS_PREMIERE_COLONNE)->first()->text();
-        $this->assertStringContainsString(self::TITRE1_PLAYLIST, $firstPlaylistName);
+        $this->assertStringContainsString(
+            self::TITRE1_PLAYLIST,
+            $firstPlaylistName,
+            "Le nom de la première playlist filtrée par catégorie est incorrect"
+        );
     }
     
     /**
@@ -135,14 +179,25 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', self::URL_ADMIN_PLAYLISTS);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page admin des playlists n'est pas accessible");
         $link = $crawler->selectLink('Voir détail')->link();
         $crawler = $client->click($link);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(
+            Response::HTTP_OK,
+            "La page de détails de la playlist n'est pas accessible"
+        );
         $uri = $client->getRequest()->server->get("REQUEST_URI");
-        $this->assertEquals('/admin/playlists/playlist/13', $uri);
+        $this->assertEquals(
+            '/admin/playlists/playlist/13',
+            $uri,
+            "L'URL de la page des détails de la playlist est incorrecte"
+        );
         $titre = $crawler->filter('h4.text-info')->text();
-        $this->assertEquals(self::TITRE1_PLAYLIST, $titre);
+        $this->assertEquals(
+            self::TITRE1_PLAYLIST,
+            $titre,
+            "Le titre de la page des détails de la playlist est incorrect"
+        );
     }
     
     /**
@@ -154,10 +209,14 @@ class AdminPlaylistsControllerTest extends WebTestCase
         $crawler = $client->request('GET', self::URL_ADMIN_PLAYLISTS);
         $link = $crawler->selectLink('Editer')->first()->link();
         $client->click($link);
-        $this->assertResponseStatusCodeSame(200);
-        $this->assertSelectorExists('form');
+        $this->assertResponseStatusCodeSame(200, "La page d'édition de playlist est inaccessible");
+        $this->assertSelectorExists('form', "Le formulaire d'édition est introuvable");
         // Vérifier que le titre exact est présent
-        $this->assertSelectorTextContains('h2.text-center', "Modification d'une playlist");
+        $this->assertSelectorTextContains(
+            'h2.text-center',
+            "Modification d'une playlist",
+            "Le titre du formulaire d'édition est incorrect"
+        );
     }
     
     /**
@@ -167,15 +226,23 @@ class AdminPlaylistsControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', self::URL_ADMIN_PLAYLISTS);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page playlists admin est inaccessible");
         $deleteLink =  $crawler->filter('a.btn-danger')->first()->link();
-        $this->assertStringContainsString('/admin/playlist/delete/', $deleteLink->getUri());
+        $this->assertStringContainsString(
+            '/admin/playlist/delete/',
+            $deleteLink->getUri(),
+            "Le lien de suppression est incorrect"
+        );
         $client->click($deleteLink);
-        $this->assertResponseRedirects(self::URL_ADMIN_PLAYLISTS);
+        $this->assertResponseRedirects(self::URL_ADMIN_PLAYLISTS, "La redirection après suppression a échoué");
         $client->followRedirect();
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('.alert-danger');
-        $this->assertSelectorTextContains('h3', "Gestion des playlists");
+        $this->assertResponseIsSuccessful("La page après la redirection n'est pas accessible");
+        $this->assertSelectorExists('.alert-danger', "Le message d'échec de suppression est absent");
+        $this->assertSelectorTextContains(
+            'h3',
+            "Gestion des playlists",
+            "Le titre de la page après l'échec de la suppression est incorrect"
+        );
     }
     
     /**
@@ -190,14 +257,26 @@ class AdminPlaylistsControllerTest extends WebTestCase
         $entityManager->persist($playlistTest);
         $entityManager->flush();
         $crawler = $client->request('GET', self::URL_ADMIN_PLAYLISTS);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page playlists admin est inaccessible");
         $deleteLink = $crawler->filter('a.btn-danger')->first()->link();
-        $this->assertStringContainsString('/admin/playlist/delete/', $deleteLink->getUri());
+        $this->assertStringContainsString(
+            '/admin/playlist/delete/',
+            $deleteLink->getUri(),
+            "Le lien de suppression est incorrect"
+        );
         $client->click($deleteLink);
-        $this->assertResponseRedirects(self::URL_ADMIN_PLAYLISTS);
+        $this->assertResponseRedirects(self::URL_ADMIN_PLAYLISTS, "La redirection après suppression a échoué");
         $client->followRedirect();
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('.alert-success', 'La playlist a bien été supprimée.');
-        $this->assertSelectorTextContains('h3', "Gestion des playlists");
+        $this->assertResponseIsSuccessful("La page après la suppression n'est pas accessible");
+        $this->assertSelectorTextContains(
+            '.alert-success',
+            'La playlist a bien été supprimée.',
+            "Le message de succès après la suppression est incorrect"
+        );
+        $this->assertSelectorTextContains(
+            'h3',
+            "Gestion des playlists",
+            "Le titre de la page après la suppression est incorrect"
+        );
     }
 }

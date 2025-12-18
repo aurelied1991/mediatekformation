@@ -27,8 +27,8 @@ class AdminCategoriesControllerTest extends WebTestCase
             ->findOneBy(['username' => 'admin']);
         $client->loginUser($user);
         $client->request('GET', '/admin');
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h3', 'Gestion des formations');
+        $this->assertResponseIsSuccessful("La page admin n'est pas accessible après le login");
+        $this->assertSelectorTextContains('h3', 'Gestion des formations', "Le titre de la page admin est incorrect");
         return $client;
     }
     
@@ -39,15 +39,26 @@ class AdminCategoriesControllerTest extends WebTestCase
     {
         $client = $this->loginAdmin();
         $crawler = $client->request('GET', self::URL_ADMIN_CATEGORIES);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page admin catégories est inaccessible");
         $deleteLink =  $crawler->filter('a.btn-danger')->first()->link();
-        $this->assertStringContainsString('/admin/categorie/delete/', $deleteLink->getUri());
+        $this->assertStringContainsString(
+            "/admin/categorie/delete/",
+            $deleteLink->getUri(),
+            "Le lien de suppression est incorrect"
+        );
         $client->click($deleteLink);
-        $this->assertResponseRedirects(self::URL_ADMIN_CATEGORIES);
+        $this->assertResponseRedirects(
+            self::URL_ADMIN_CATEGORIES,
+            "La redirection après une tentative de suppression a échoué"
+        );
         $client->followRedirect();
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('.alert-danger');
-        $this->assertSelectorTextContains('h3', "Gestion des catégories");
+        $this->assertResponseIsSuccessful("La page après redirection n'est pas accessible");
+        $this->assertSelectorExists('.alert-danger', "Le message d'échec de suppression est absent");
+        $this->assertSelectorTextContains(
+            'h3',
+            "Gestion des catégories",
+            "Le titre de la page après l'échec de la suppression est incorrect"
+        );
     }
     
     /**
@@ -62,13 +73,25 @@ class AdminCategoriesControllerTest extends WebTestCase
         $entityManager->persist($categorieTest);
         $entityManager->flush();
         $crawler = $client->request('GET', self::URL_ADMIN_CATEGORIES);
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK, "La page admin des catégories est inaccessible");
         $deleteLink = $crawler->filter('a.btn-danger')->first()->link();
-        $this->assertStringContainsString('/admin/categorie/delete/', $deleteLink->getUri());
+        $this->assertStringContainsString(
+            '/admin/categorie/delete/',
+            $deleteLink->getUri(),
+            "Le lien de suppression est incorrect"
+        );
         $client->click($deleteLink);
         $client->followRedirect();
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('.alert-success', 'La catégorie a bien été supprimée.');
-        $this->assertSelectorTextContains('h3', "Gestion des catégories");
+        $this->assertResponseIsSuccessful("La page après suppression n'est pas accessible");
+        $this->assertSelectorTextContains(
+            '.alert-success',
+            'La catégorie a bien été supprimée.',
+            "Le message de succès après la suppression est incorrect"
+        );
+        $this->assertSelectorTextContains(
+            'h3',
+            "Gestion des catégories",
+            "Le titre de la page après la suppression est incorrect"
+        );
     }
 }

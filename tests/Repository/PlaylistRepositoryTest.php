@@ -45,7 +45,7 @@ class PlaylistRepositoryTest extends KernelTestCase
         $playlist = $this->getPlaylist();
         $nbPlaylists = $repository->count([]);
         $repository->add($playlist);
-        $this->assertEquals($nbPlaylists + 1, $repository->count([]), "Erreur lors de l'ajout");
+        $this->assertEquals($nbPlaylists + 1, $repository->count([]), "La playlist n’a pas été ajoutée");
     }
     
     /**
@@ -58,7 +58,7 @@ class PlaylistRepositoryTest extends KernelTestCase
         $repository->add($playlist);
         $nbPlaylists = $repository->count([]);
         $repository->remove($playlist);
-        $this->assertEquals($nbPlaylists - 1, $repository->count([]), "Erreur lors de l'ajout");
+        $this->assertEquals($nbPlaylists - 1, $repository->count([]), "La playlist n’a pas été supprimée");
     }
     
     /**
@@ -69,9 +69,17 @@ class PlaylistRepositoryTest extends KernelTestCase
     {
         $repository = $this->recupRepository();
         $playlistsTriNomASC = $repository->findAllOrderByName("ASC");
-        $this->assertEquals("Bases de la programmation (C#)", $playlistsTriNomASC[0]->getName());
+        $this->assertEquals(
+            "Bases de la programmation (C#)",
+            $playlistsTriNomASC[0]->getName(),
+            "La première playlist triée par ordre ASC n'est pas celle attendue"
+        );
         $playlistsTriNomDESC = $repository->findAllOrderByName("DESC");
-        $this->assertEquals("Visual Studio 2019 et C#", $playlistsTriNomDESC[0]->getName());
+        $this->assertEquals(
+            "Visual Studio 2019 et C#",
+            $playlistsTriNomDESC[0]->getName(),
+            "La première playlist triée par ordre ASC n'est pas celle attendue"
+        );
     }
     
     /**
@@ -84,7 +92,7 @@ class PlaylistRepositoryTest extends KernelTestCase
         $repository->add($playlist);
         $playlists = $repository->findByContainValue("name", "tester");
         $nbPlaylists = count($playlists);
-        $this->assertEquals(1, $nbPlaylists);
+        $this->assertEquals(1, $nbPlaylists, "La recherche par valeur n'a pas retourné le nombre attendu de playlists");
     }
     
     /**

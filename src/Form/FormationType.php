@@ -84,7 +84,7 @@ class FormationType extends AbstractType
                 ]
             ])
             //Champ correspondant à l'id de la vidéo youtube
-            ->add('videoid', TextType::class, [
+            ->add('videoId', TextType::class, [
                 'required' => true,
                 'label' => 'ID YouTube',
                 'constraints' => [
