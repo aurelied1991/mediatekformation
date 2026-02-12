@@ -118,4 +118,4 @@ La partie basse de la page est identique aux autres pages du back-office (lien v
 
 ## Test de l'application en ligne
 - Pour tester l'application en ligne, il faut se rendre à l'adresse suivante : https://mediatekformation.infinityfreeapp.com. <br>
-- Pour accéder à la partie administrateur , il faut ajouter /admin à la fin de l'URL précedente et disposer des identifants nécessaires : https://mediatekformation.infinityfreeapp.com/admin. <br>
+- Pour accéder à la partie administrateur , il faut ajouter /admin à la fin de l'URL précedente et disposer des identifiants nécessaires : https://mediatekformation.infinityfreeapp.com/admin. <br>
