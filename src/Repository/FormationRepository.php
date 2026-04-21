@@ -42,6 +42,14 @@ class FormationRepository extends ServiceEntityRepository
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
+    
+    public function findAllOrderedByDateDesc(): array
+    {
+        return $this->createQueryBuilder('f')
+                ->orderBy('f.publishedAt', 'DESC')
+                ->getQuery()
+                ->getResult();
+    }
 
     /**
      * Retourne toutes les formations triées sur un champ donné
@@ -77,7 +85,10 @@ class FormationRepository extends ServiceEntityRepository
     public function findByContainValue($champ, $valeur, $table=""): array
     {
         if ($valeur=="") {
-            return $this->findAll();
+            return $this->createQueryBuilder('f')
+           ->orderBy('f.publishedAt', 'DESC')
+           ->getQuery()
+           ->getResult();
         }
         if ($table=="") {
             return $this->createQueryBuilder('f')

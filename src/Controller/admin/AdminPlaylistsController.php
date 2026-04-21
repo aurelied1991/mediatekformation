@@ -66,7 +66,7 @@ class AdminPlaylistsController extends AbstractController
     public function index(): Response
     {
         $playlists = $this->playlistRepository->findAllOrderByName('ASC');
-        $categories = $this->categorieRepository->findAll();
+        $categories = $this->categorieRepository->findAllSorted();
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
             'categories' => $categories
@@ -93,7 +93,7 @@ class AdminPlaylistsController extends AbstractController
             $playlists = $this->playlistRepository->findAllOrderByName('ASC');
         }
         //Récupération de la liste des catégories pour l'affichage
-        $categories = $this->categorieRepository->findAll();
+        $categories = $this->categorieRepository->findAllSorted();
         //Affichage de la page avec les playlists triées
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
@@ -113,7 +113,7 @@ class AdminPlaylistsController extends AbstractController
     {
         $valeur = $request->get("recherche");
         $playlists = $this->playlistRepository->findByContainValue($champ, $valeur, $table);
-        $categories = $this->categorieRepository->findAll();
+        $categories = $this->categorieRepository->findAllSorted();
         return $this->render(self::PAGE_PLAYLISTS, [
             'playlists' => $playlists,
             'categories' => $categories,

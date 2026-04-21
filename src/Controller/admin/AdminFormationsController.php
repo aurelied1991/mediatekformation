@@ -54,8 +54,8 @@ class AdminFormationsController extends AbstractController
     #[Route('/admin', name: 'admin.formations')]
     public function index(): Response
     {
-        $formations = $this->formationRepository->findAll();
-        $categories = $this->categorieRepository->findAll();
+        $formations = $this->formationRepository->findAllOrderedByDateDesc();
+        $categories = $this->categorieRepository->findAllSorted();
         return $this->render(self::PAGE_FORMATIONS, [
             'formations' => $formations,
             'categories' => $categories
@@ -73,7 +73,7 @@ class AdminFormationsController extends AbstractController
     public function sort($champ, $ordre, $table=""): Response
     {
         $formations = $this->formationRepository->findAllOrderBy($champ, $ordre, $table);
-        $categories = $this->categorieRepository->findAll();
+        $categories = $this->categorieRepository->findAllSorted();
         return $this->render(self::PAGE_FORMATIONS, [
             'formations' => $formations,
             'categories' => $categories
@@ -92,7 +92,7 @@ class AdminFormationsController extends AbstractController
     {
         $valeur = $request->get("recherche");
         $formations = $this->formationRepository->findByContainValue($champ, $valeur, $table);
-        $categories = $this->categorieRepository->findAll();
+        $categories = $this->categorieRepository->findAllSorted();
         return $this->render(self::PAGE_FORMATIONS, [
             'formations' => $formations,
             'categories' => $categories,
